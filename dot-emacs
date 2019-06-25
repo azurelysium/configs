@@ -1,0 +1,186 @@
+;;; -*- mode: emacs-lisp; coding: utf-8; -*-
+
+(setq inhibit-startup-screen t)
+(setq make-backup-files nil)
+(setq x-select-enable-clipboard t)
+(setq-default indent-tabs-mode nil)
+
+(column-number-mode    t)
+(display-time-mode    -1)
+(show-paren-mode       t)
+(transient-mark-mode   t)
+(global-font-lock-mode t)
+(electric-indent-mode -1)
+
+;(global-linum-mode   +1)
+;(global-hl-line-mode +1)
+(setq linum-format
+      (lambda (line)
+        (propertize (format
+                     (let ((w (length (number-to-string (count-lines (point-min) (point-max))))))
+                       (concat "%" (number-to-string w) "d ")) line) 'face 'linum)))
+
+;;; Korean Setting
+(set-fontset-font "fontset-default" '(#x1100 . #xffdc)  '("Noto Sans Korean" . "unicode-bmp"))
+(set-fontset-font "fontset-default" '(#xe0bc . #xf66e)  '("Noto Sans Korean" . "unicode-bmp"))
+(set-fontset-font t 'hangul (font-spec :name "Noto Sans Korean"))
+
+(set-language-environment "korean")
+(setq default-input-method "korean-hangul")
+(set-keyboard-coding-system 'utf-8)
+(set-terminal-coding-system 'utf-8)
+(prefer-coding-system 'utf-8)
+
+;;; package.el
+(require 'package)
+(dolist (i '(("org"             .       "http://orgmode.org/elpa/")
+             ("gnu"             .       "http://elpa.gnu.org/packages/")
+             ("melpa"           .       "https://melpa.org/packages/")
+             ("melpa-stable"    .       "https://stable.melpa.org/packages/")
+             ("marmalade"       .       "http://marmalade-repo.org/packages/")))
+  (add-to-list 'package-archives i))
+(package-initialize)
+;(package-refresh-contents)
+
+(unless (package-installed-p 'use-package)
+  (package-refresh-contents)
+(package-install 'use-package))
+
+;;; Key Bindings
+(use-package general :ensure t :pin melpa)
+
+(general-define-key :prefix "C-c"
+ "a" 'org-agenda
+ "t" 'eshell
+ "w" 'w3m
+ "l" 'linum-mode
+ "/" 'helm-swoop
+ "?" 'helm-multi-swoop)
+
+(general-define-key
+ :keymaps 'org-mode-map
+ "M-n" 'org-next-visible-heading
+ "M-p" 'org-previous-visible-heading)
+
+(global-set-key [left] 'windmove-left)          ; move to left window
+(global-set-key [right] 'windmove-right)        ; move to right window
+(global-set-key [up] 'windmove-up)              ; move to upper window
+(global-set-key [down] 'windmove-down)          ; move to lower window
+
+;;; multiple cursors
+(use-package multiple-cursors :ensure t :pin melpa)
+(general-define-key :prefix "C-c c"
+ "c" 'mc/edit-lines
+ "]" 'mc/mark-next-like-this
+ "[" 'mc/mark-previous-like-this
+ "/" 'mc/mark-all-like-this)
+
+;;; cleaner modeline.
+(use-package diminish :ensure t :pin melpa
+  :config (diminish 'undo-tree-mode))
+
+;;; which-key
+(use-package which-key :ensure t
+  :diminish which-key-mode
+  :config (which-key-mode))
+
+(use-package helm-descbinds :ensure t :pin melpa
+  :config (global-set-key (kbd "C-h b") 'helm-descbinds))
+
+;;; helm
+(use-package helm :ensure t :pin melpa
+  :diminish 'helm-mode
+  :config (progn (require 'helm-config)
+                 (helm-mode +1)
+                 (setq helm-split-window-in-side-p           t
+                       helm-move-to-line-cycle-in-source     nil
+                       helm-ff-search-library-in-sexp        t ; search for library in `require' and `declare-function' sexp.
+                       helm-scroll-amount                    8 ; scroll 8 lines other window using M-<next>/M-<prior>
+                       helm-ff-file-name-history-use-recentf t
+                       helm-echo-input-in-header-line t
+                       helm-mode-fuzzy-match t
+                       helm-recentf-fuzzy-match t
+                       helm-buffers-fuzzy-matching t
+                       helm-recentf-fuzzy-match t
+                       helm-buffers-fuzzy-matching t
+                       helm-locate-fuzzy-match t
+                       helm-M-x-fuzzy-match t
+                       helm-semantic-fuzzy-match t
+                       helm-imenu-fuzzy-match t
+                       helm-apropos-fuzzy-match t
+                       helm-lisp-completion-at-point nil)
+                 (global-set-key (kbd "M-x") 'helm-M-x)
+                 (global-set-key (kbd "C-x C-f") 'helm-find-files)
+                 (global-set-key (kbd "C-x b") 'helm-mini)
+))
+
+;;; helm extensions
+(use-package helm-projectile :ensure t :pin melpa
+  :config (progn (setq projectile-completion-system 'helm)
+                 (helm-projectile-on)))
+(use-package helm-rg :ensure t :pin melpa)
+
+(use-package helm-swoop :ensure t :pin melpa
+  :config (progn
+            ;; If there is no symbol at the cursor, use the last used words instead.
+            (setq helm-swoop-pre-input-function
+                  (lambda ()
+                    (let (($pre-input (thing-at-point 'symbol)))
+                      (if (eq (length $pre-input) 0)
+                          (if (boundp 'helm-swoop-pattern) ;; this variable keeps the last used words
+                              helm-swoop-pattern "")
+                        $pre-input))))
+            ;; When doing isearch, hand the word over to helm-swoop
+            (define-key isearch-mode-map (kbd "M-i") 'helm-swoop-from-isearch)
+            ;; From helm-swoop to helm-multi-swoop-all
+            (define-key helm-swoop-map (kbd "M-i") 'helm-multi-swoop-all-from-helm-swoop)))
+
+;;; projectile
+(use-package projectile :pin melpa
+  :config (projectile-global-mode))
+
+;;; flycheck
+(use-package flycheck :ensure t :pin melpa
+  :config (global-flycheck-mode +1))
+
+;;; org
+(add-hook 'org-mode-hook 'turn-on-auto-fill)
+(setq org-log-done 'time)
+
+;;; writeroom
+(use-package writeroom-mode :ensure t :pin melpa)
+
+;;; for programming
+(use-package js-format :ensure t :pin melpa
+  :init
+  (add-hook 'js2-mode-hook
+            (lambda() (js-format-setup "airbnb"))))
+
+;;; w3m
+(use-package w3m :ensure t :pin melpa
+  :config (progn
+            ;; If there is no symbol at the cursor, use the last used words instead.
+            (setq w3m-use-cookies t)
+            (setq w3m-fill-column 0)
+            (setq w3m-home-page "http://www.google.com/ncr")
+            (autoload 'w3m-browse-url "w3m" "Ask a WWW browser to show a URL." t)
+            (autoload 'w3m-region "w3m" "Render region in current buffer and replace with result." t)
+            (add-hook 'w3m-mode-hook
+              (lambda ()
+                (local-set-key [(up)] 'w3m-view-this-url-new-session)
+                (local-set-key [(down)] 'w3m-delete-buffer)
+                (local-set-key [(left)] 'w3m-previous-buffer)
+                (local-set-key [(right)] 'w3m-next-buffer)
+                (local-set-key [(p)] 'w3m-previous-anchor)
+                (local-set-key [(n)] 'w3m-next-anchor)
+              ))
+            (setq w3m-coding-system 'utf-8
+                  w3m-file-coding-system 'utf-8
+                  w3m-file-name-coding-system 'utf-8
+                  w3m-input-coding-system 'utf-8
+                  w3m-output-coding-system 'utf-8
+                  w3m-terminal-coding-system 'utf-8)))
+
+;;; custom settings
+(setq custom-file "~/.emacs.machine-dependent.el")
+(load custom-file 'noerror)
