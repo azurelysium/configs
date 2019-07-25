@@ -21,8 +21,6 @@
                        (concat "%" (number-to-string w) "d ")) line) 'face 'linum)))
 
 ;;; Korean Setting
-(set-fontset-font "fontset-default" '(#x1100 . #xffdc)  '("Noto Sans Korean" . "unicode-bmp"))
-(set-fontset-font "fontset-default" '(#xe0bc . #xf66e)  '("Noto Sans Korean" . "unicode-bmp"))
 (set-fontset-font t 'hangul (font-spec :name "Noto Sans Korean"))
 
 (set-language-environment "korean")
