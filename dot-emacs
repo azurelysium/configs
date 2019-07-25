@@ -55,6 +55,7 @@
  "w" 'w3m
  "l" 'linum-mode
  "/" 'helm-swoop
+ "p" 'helm-projectile-find-file
  "?" 'helm-multi-swoop)
 
 (general-define-key
