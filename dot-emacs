@@ -56,8 +56,8 @@
 
 (general-define-key
  :keymaps 'org-mode-map
- "M-n" 'org-next-visible-heading
- "M-p" 'org-previous-visible-heading)
+ "M-n" 'org-forward-heading-same-level
+ "M-p" 'org-backward-heading-same-level)
 
 (global-set-key [left] 'windmove-left)          ; move to left window
 (global-set-key [right] 'windmove-right)        ; move to right window
