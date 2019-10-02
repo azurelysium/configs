@@ -52,7 +52,7 @@
  "l" 'linum-mode
  "/" 'helm-swoop
  "p" 'helm-projectile-find-file
- "?" 'helm-multi-swoop)
+ "?" 'helm-rg)
 
 (general-define-key
  :keymaps 'org-mode-map
