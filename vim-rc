@@ -26,6 +26,7 @@ ca te tabedit
 map gn :bn<cr>
 map gp :bp<cr>
 map gd :bd<cr>
+map gq :bp<bar>sp<bar>bn<bar>bd<CR>
 
 set encoding=utf-8
 
