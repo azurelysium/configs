@@ -54,6 +54,9 @@
  "p" 'helm-projectile-find-file
  "?" 'helm-projectile-rg)
 
+(general-define-key :prefix "C-x"
+ "\\" 'toggle-korean-input-method)
+
 (general-define-key
  :keymaps 'org-mode-map
  "M-n" 'org-forward-heading-same-level
