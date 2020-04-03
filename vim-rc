@@ -29,6 +29,7 @@ map gd :bd<cr>
 map gq :bp<bar>sp<bar>bn<bar>bd<CR>
 
 set encoding=utf-8
+set formatoptions-=tc
 
 au BufNewFile,BufRead *.py
     \ set tabstop=4 |
