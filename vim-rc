@@ -10,6 +10,9 @@ call vundle#begin()
 
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
+Plugin 'hashivim/vim-terraform'
+Plugin 'kien/ctrlp.vim'
+Plugin 'mihaifm/bufstop'
 
 " add all your plugins here (note older versions of Vundle
 " used Bundle instead of Plugin)
@@ -27,7 +30,10 @@ map gn :bn<cr>
 map gp :bp<cr>
 map gd :bd<cr>
 map gq :bp<bar>sp<bar>bn<bar>bd<CR>
+map gq :bp<bar>sp<bar>bn<bar>bd<CR>
+map gb :BufstopModeFast<cr>
 
+set hidden
 set encoding=utf-8
 set formatoptions-=tc
 
