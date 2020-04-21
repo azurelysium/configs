@@ -33,6 +33,11 @@ map gq :bp<bar>sp<bar>bn<bar>bd<CR>
 map gq :bp<bar>sp<bar>bn<bar>bd<CR>
 map gb :BufstopModeFast<cr>
 
+map <Up> <C-w>k
+map <Down> <C-w>j
+map <Left> <C-w>h
+map <Right> <C-w>l
+
 set hidden
 set encoding=utf-8
 set formatoptions-=tc
