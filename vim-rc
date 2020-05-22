@@ -23,8 +23,10 @@ Plugin 'mihaifm/bufstop'
 call vundle#end()            " required
 filetype plugin indent on    " required
 
-ca tn tabnew
-ca te tabedit
+map tn :tabnext<cr>
+map tp :tabprevious<cr>
+map tq :tabclose<cr>
+map te :tabedit<cr>
 
 map gn :bn<cr>
 map gp :bp<cr>
