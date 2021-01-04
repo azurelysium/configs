@@ -143,6 +143,11 @@
 (use-package flycheck :ensure t :pin melpa
   :config (global-flycheck-mode +1))
 
+(custom-set-variables
+ '(flycheck-python-flake8-executable "python3")
+ '(flycheck-python-pycompile-executable "python3")
+ '(flycheck-python-pylint-executable "python3"))
+
 ;;; org
 (add-hook 'org-mode-hook 'turn-on-auto-fill)
 (setq org-log-done 'time)
