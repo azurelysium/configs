@@ -1,0 +1,15 @@
+#set-window-option -g mode-keys vi
+set -g status-bg blue
+set -g status-fg white
+set -g prefix C-z
+
+bind r source-file ~/.tmux.conf
+
+#set -g mouse-select-window on
+#set -g mouse-select-pane on
+#set -g mouse-resize-pane on
+
+bind -n S-Left select-pane -L
+bind -n S-Right select-pane -R
+bind -n S-Up select-pane -U
+bind -n S-Down select-pane -D
