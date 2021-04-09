@@ -6,8 +6,8 @@
 
 ;; Some functionality uses this to identify you, e.g. GPG configuration, email
 ;; clients, file templates and snippets.
-(setq user-full-name "John Doe"
-      user-mail-address "john@doe.com")
+(setq user-full-name "Minhwan Kim"
+      user-mail-address "azurelysium@gmail.com")
 
 ;; Doom exposes five (optional) variables for controlling fonts in Doom. Here
 ;; are the three important ones:
@@ -52,3 +52,20 @@
 ;;
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
+
+;; Azurelysium's Settings
+(remove-hook 'doom-first-buffer-hook #'global-hl-line-mode)
+
+(setq make-backup-files nil)
+(setq-default indent-tabs-mode nil)
+
+(set-language-environment "korean")
+(setq default-input-method "korean-hangul")
+(set-keyboard-coding-system 'utf-8)
+(set-terminal-coding-system 'utf-8)
+(prefer-coding-system 'utf-8)
+
+(global-set-key [left] 'windmove-left)          ; move to left window
+(global-set-key [right] 'windmove-right)        ; move to right window
+(global-set-key [up] 'windmove-up)              ; move to upper window
+(global-set-key [down] 'windmove-down)          ; move to lower window
