@@ -34,8 +34,9 @@ bind C-f command-prompt -p find-session 'switch-client -t %%'
 
 bind b list-buffers  # list paste buffers
 bind P choose-buffer # choose which buffer to paste from
+bind y set-window-option synchronize-panes\; display-message "synchronize-panes is now #{?pane_synchronized,on,off}"
 
-bind C-space display-popup -w 80% -h 60% -E "tmux attach -t popup"
+bind C-space display-popup -w 90% -h 80% -E "tmux attach -t popup"
 
 #bind-key M-s choose-tree -Zs
 #bind-key -n M-s popup -d '#{pane_current_path}' -h30% -E 't'
