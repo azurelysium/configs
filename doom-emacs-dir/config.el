@@ -33,7 +33,7 @@
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
-(setq display-line-numbers-type t)
+(setq display-line-numbers-type 'nil)
 
 
 ;; Here are some additional functions/macros that could help you configure Doom:
@@ -69,3 +69,8 @@
 (global-set-key [right] 'windmove-right)        ; move to right window
 (global-set-key [up] 'windmove-up)              ; move to upper window
 (global-set-key [down] 'windmove-down)          ; move to lower window
+
+;; orgmode settings
+(add-hook 'org-mode-hook (lambda () (linum-mode -1)))
+(add-hook 'org-mode-hook
+  (lambda () (local-set-key (kbd "C-c C-b") 'org-mark-ring-goto)))
