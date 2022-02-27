@@ -50,3 +50,4 @@
 ;(unpin! t)
 
 (package! go-mode)
+(package! zoom-window)
