@@ -69,7 +69,7 @@
 (global-set-key [right] 'windmove-right)        ; move to right window
 (global-set-key [up] 'windmove-up)              ; move to upper window
 (global-set-key [down] 'windmove-down)          ; move to lower window
-(global-set-key (kbd "C-c C-z") 'zoom-window-zoom)
+(global-set-key (kbd "C-c z") 'zoom-window-zoom)
 
 ;; orgmode settings
 (add-hook 'org-mode-hook (lambda () (linum-mode -1)))
