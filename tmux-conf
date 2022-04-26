@@ -34,9 +34,19 @@ bind C-f command-prompt -p find-session 'switch-client -t %%'
 
 bind b list-buffers  # list paste buffers
 bind P choose-buffer # choose which buffer to paste from
+bind T run-shell 'tmux set-buffer -b x-clip "$(date -Iseconds)"' \; paste-buffer -b x-clip -d
 bind y set-window-option synchronize-panes\; display-message "synchronize-panes is now #{?pane_synchronized,on,off}"
 
 bind C-space display-popup -w 90% -h 80% -E "tmux attach -t popup"
 
 #bind-key M-s choose-tree -Zs
 #bind-key -n M-s popup -d '#{pane_current_path}' -h30% -E 't'
+
+#transfer copied text to attached terminal with yank
+bind-key -T copy-mode-vi Y send-keys -X copy-pipe 'yank > #{pane_tty}'
+
+# transfer most-recently copied text to attached terminal with yank
+bind-key -n M-y run-shell 'tmux save-buffer - | yank > #{pane_tty}'
+
+# transfer previously copied text (chosen from a menu) to attached terminal
+bind-key -n M-Y choose-buffer 'run-shell "tmux save-buffer -b \"%%%\" - | yank > #{pane_tty}"'
