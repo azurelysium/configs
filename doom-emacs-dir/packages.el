@@ -50,4 +50,5 @@
 ;(unpin! t)
 
 (package! go-mode)
+(package! dockerfile-mode)
 (package! zoom-window)
