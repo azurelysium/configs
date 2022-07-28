@@ -36,7 +36,7 @@
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
-(setq display-line-numbers-type 'nil)
+(setq display-line-numbers-type t)
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
@@ -75,9 +75,10 @@
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
 
-;; Azurelysium's Settings
-(remove-hook 'doom-first-buffer-hook #'global-hl-line-mode)
+(setq display-line-numbers-type 'nil)
 
+;; Azurelysium's Settings
+;;(remove-hook 'doom-first-buffer-hook #'global-hl-line-mode)
 (setq make-backup-files nil)
 (setq-default indent-tabs-mode nil)
 
@@ -97,3 +98,25 @@
 (add-hook 'org-mode-hook (lambda () (linum-mode -1)))
 (add-hook 'org-mode-hook
   (lambda () (local-set-key (kbd "C-c C-b") 'org-mark-ring-goto)))
+
+(use-package! typescript-mode
+  :init
+  (define-derived-mode typescript-tsx-ts-mode typescript-mode "typescript-tsx")
+  (add-to-list 'auto-mode-alist (cons (rx ".tsx" string-end) #'typescript-tsx-ts-mode))
+  t)
+
+(add-hook! typescript-tsx-ts-mode 'lsp!)
+
+(use-package! tree-sitter
+  :hook (prog-mode . turn-on-tree-sitter-mode)
+  :hook (tree-sitter-after-on . tree-sitter-hl-mode)
+  :config
+  (require 'tree-sitter-langs)
+
+  (tree-sitter-require 'tsx)
+  (add-to-list 'tree-sitter-major-mode-language-alist '(typescript-tsx-ts-mode . tsx))
+
+  ;; This makes every node a link to a section of code
+  (setq tree-sitter-debug-jump-buttons t
+        ;; and this highlights the entire sub tree in your code
+        tree-sitter-debug-highlight-jump-region t))
