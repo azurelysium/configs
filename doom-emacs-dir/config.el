@@ -78,7 +78,7 @@
 (setq display-line-numbers-type 'nil)
 
 ;; Azurelysium's Settings
-;;(remove-hook 'doom-first-buffer-hook #'global-hl-line-mode)
+(remove-hook 'doom-first-buffer-hook #'global-hl-line-mode)
 (setq make-backup-files nil)
 (setq-default indent-tabs-mode nil)
 
