@@ -70,10 +70,6 @@ DISABLE_AUTO_TITLE="true"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git jump virtualenv)
 
-function virtualenv_info {
-    [ $VIRTUAL_ENV ] && echo ‘(‘`basename $VIRTUAL_ENV`’) ‘
-}
-
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
@@ -102,14 +98,27 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+function virtualenv_info {
+  [ $VIRTUAL_ENV ] && echo "[$(basename $VIRTUAL_ENV)] "
+}
+
+export PROMPT="\$(virtualenv_info)$PROMPT"
+setopt PROMPT_SUBST
+
+export TERM=xterm
+export EDITOR='emacs -nw'
+
 alias 'ls'='ls --color=auto'
 alias 'scrcap'='import png:- | xclip -selection c -t image/png'
 alias 'send-to-clipboard'='xclip -selection clipboard'
 
-alias 'emacs'='emacsclient -nw'
-export EDITOR='emacs -nw'
+export PYENV_ROOT="$HOME/.pyenv"
+command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
 
 export PATH=$PATH:~/Bin:/snap/bin
 
-source ~/envs/default/bin/activate
 eval "$(direnv hook zsh)"
+
+export VIRTUAL_ENV_DISABLE_PROMPT=0
+source ~/envs/default/bin/activate
