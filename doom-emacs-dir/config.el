@@ -75,7 +75,7 @@
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
 
-(setq display-line-numbers-type 'nil)
+;;(setq display-line-numbers-type 'nil)
 
 ;; Azurelysium's Settings
 (remove-hook 'doom-first-buffer-hook #'global-hl-line-mode)
@@ -95,9 +95,9 @@
 (global-set-key (kbd "C-c z") 'zoom-window-zoom)
 
 ;; orgmode settings
-(add-hook 'org-mode-hook (lambda () (linum-mode -1)))
 (add-hook 'org-mode-hook
   (lambda () (local-set-key (kbd "C-c C-b") 'org-mark-ring-goto)))
+(add-hook 'org-mode-hook (lambda () (display-line-numbers-mode -1)))
 
 (use-package! typescript-mode
   :init
