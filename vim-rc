@@ -10,7 +10,6 @@ call vundle#begin()
 
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
-Plugin 'hashivim/vim-terraform'
 Plugin 'kien/ctrlp.vim'
 Plugin 'mihaifm/bufstop'
 
@@ -53,3 +52,4 @@ au BufNewFile,BufRead *.py
     \ set autoindent |
     \ set fileformat=unix
 
+inoremap <C-g> <ESC>

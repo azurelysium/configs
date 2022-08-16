@@ -106,6 +106,8 @@
   t)
 
 (add-hook! typescript-tsx-ts-mode 'lsp!)
+(setq typescript-indent-level 2)
+(setq js-indent-level 2)
 
 (use-package! tree-sitter
   :hook (prog-mode . turn-on-tree-sitter-mode)
