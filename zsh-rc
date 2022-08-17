@@ -108,6 +108,7 @@ setopt PROMPT_SUBST
 export TERM=xterm
 export EDITOR='emacs -nw'
 
+alias 'emacs'='emacs -nw'
 alias 'ls'='ls --color=auto'
 alias 'scrcap'='import png:- | xclip -selection c -t image/png'
 alias 'send-to-clipboard'='xclip -selection clipboard'
