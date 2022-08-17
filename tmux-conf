@@ -29,6 +29,11 @@ bind -n S-Right select-pane -R
 bind -n S-Up select-pane -U
 bind -n S-Down select-pane -D
 
+bind C-h select-pane -L
+bind C-l select-pane -R
+bind C-k select-pane -U
+bind C-j select-pane -D
+
 bind C-c new-session
 bind C-r command-prompt -p rename-session 'rename-session %%'
 bind C-f command-prompt -p find-session 'switch-client -t %%'
