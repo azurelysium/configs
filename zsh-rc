@@ -113,6 +113,11 @@ alias 'ls'='ls --color=auto'
 alias 'scrcap'='import png:- | xclip -selection c -t image/png'
 alias 'send-to-clipboard'='xclip -selection clipboard'
 
+alias 'k'='kubectl'
+alias 'kx'='kubectx'
+alias 'kn'='kubens'
+alias 'k?'='echo "  Context: $(kubectx -c) \nNamespace: $(kubens -c)"'
+
 export PYENV_ROOT="$HOME/.pyenv"
 command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
