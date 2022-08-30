@@ -38,19 +38,26 @@
 (global-set-key [down] 'windmove-down)          ; move to lower window
 (global-set-key (kbd "C-c z") 'zoom-window-zoom)
 
-(:map evil-window-map
+(map!
+ (:leader
+  (:prefix "t"
+   :desc "Toggle Treemacs" "t" '+treemacs/toggle)
+  (:prefix "o"
+   :desc "Open kill ring" "k" #'+default/yank-pop))
+
+ (:map evilem-map
+  :after evil-easymotion
+  "<down>" #'evilem-motion-next-line
+  "<up>" #'evilem-motion-previous-line)
+
+ (:map evil-window-map
   "<left>"     #'evil-window-left
   "<right>"    #'evil-window-right
   "<up>"       #'evil-window-up
   "<down>"     #'evil-window-down)
 
-(map!
- (:leader
-  (:prefix "f"
-   :desc "Toggle Treemacs" "t" #'+treemacs/toggle-project)
-  (:prefix "o"
-   :desc "Open kill ring" "k" #'+default/yank-pop
-   :desc "Open notes.org" "n" #'org-notes-open))
+ "<home>" #'back-to-indentation-or-beginning
+ "<end>" #'end-of-line)
 
 ;; orgmode settings
 
