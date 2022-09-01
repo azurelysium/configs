@@ -49,10 +49,9 @@
 ;; ...Or *all* packages (NOT RECOMMENDED; will likely break things)
 ;(unpin! t)
 
+(package! evil-escape)
 (package! go-mode)
 (package! dockerfile-mode)
 (package! typescript-mode)
 (package! rjsx-mode)
-(package! tree-sitter)
-(package! tree-sitter-langs)
 (package! zoom-window)

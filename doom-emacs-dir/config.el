@@ -31,6 +31,7 @@
 (prefer-coding-system 'utf-8)
 
 ;; bindings
+(global-set-key (kbd "C-c C-g") 'evil-escape)
 
 (global-set-key [left] 'windmove-left)          ; move to left window
 (global-set-key [right] 'windmove-right)        ; move to right window
@@ -75,9 +76,10 @@
   (add-to-list 'auto-mode-alist (cons (rx ".tsx" string-end) #'typescript-tsx-ts-mode))
   t)
 
-(add-hook! typescript-tsx-ts-mode 'lsp!)
 (setq typescript-indent-level 2)
 (setq js-indent-level 2)
+;(add-hook! typescript-tsx-ts-mode 'lsp!)
+;(setq lsp-idle-delay 1)
 
 (use-package! tree-sitter
   :hook (prog-mode . turn-on-tree-sitter-mode)
