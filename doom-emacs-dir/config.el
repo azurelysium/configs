@@ -31,13 +31,17 @@
 (prefer-coding-system 'utf-8)
 
 ;; bindings
-(global-set-key (kbd "C-c C-g") 'evil-escape)
+;(global-set-key (kbd "C-c C-g") 'evil-escape)
+(setq-default evil-escape-key-sequence "df")
 
 (global-set-key [left] 'windmove-left)          ; move to left window
 (global-set-key [right] 'windmove-right)        ; move to right window
 (global-set-key [up] 'windmove-up)              ; move to upper window
 (global-set-key [down] 'windmove-down)          ; move to lower window
 (global-set-key (kbd "C-c z") 'zoom-window-zoom)
+
+(evil-global-set-key 'normal "J" 'evil-forward-paragraph)
+(evil-global-set-key 'normal "K" 'evil-backward-paragraph)
 
 (map!
  (:leader
