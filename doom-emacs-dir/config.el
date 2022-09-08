@@ -33,6 +33,7 @@
 ;; bindings
 ;(global-set-key (kbd "C-c C-g") 'evil-escape)
 (setq-default evil-escape-key-sequence "df")
+(setq-default evil-escape-delay 0.2)
 
 (global-set-key [left] 'windmove-left)          ; move to left window
 (global-set-key [right] 'windmove-right)        ; move to right window
