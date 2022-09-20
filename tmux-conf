@@ -43,8 +43,8 @@ bind P choose-buffer # choose which buffer to paste from
 bind T run-shell 'tmux set-buffer -b x-clip "$(date -Iseconds)"' \; paste-buffer -b x-clip -d
 bind y set-window-option synchronize-panes\; display-message "synchronize-panes is now #{?pane_synchronized,on,off}"
 
-#bind space display-popup -w 90% -h 80% -E "tmux attach -t popup"
-bind space run-shell "bash ~/Bin/tmux-toggle-popup.sh"
+bind C-space display-popup -w 90% -h 80% -E "tmux attach -t popup"
+#bind space run-shell "bash ~/Bin/tmux-toggle-popup.sh"
 
 #bind-key M-s choose-tree -Zs
 

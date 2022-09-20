@@ -106,7 +106,7 @@ export PROMPT="\$(virtualenv_info)$PROMPT"
 setopt PROMPT_SUBST
 
 export TERM=xterm
-export EDITOR='emacs -nw'
+export EDITOR='vim'
 
 alias 'emacs'='emacs -nw'
 alias 'ls'='ls --color=auto'
