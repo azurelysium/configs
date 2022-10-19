@@ -53,3 +53,10 @@ au BufNewFile,BufRead *.py
     \ set fileformat=unix
 
 inoremap <C-g> <ESC>
+syntax on
+set shiftwidth=4
+set tabstop=4
+set expandtab
+set ruler
+set hlsearch
+set number

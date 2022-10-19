@@ -9,6 +9,7 @@ hs.hotkey.bind({'ctrl', 'alt'}, '0', function() hs.caffeinate.lockScreen() end)
 
 -- Toggle a window between its normal size, and being maximized
 local frameCache = {}
+hs.window.animationDuration = 0
 function toggle_window_maximized()
    local win = hs.window.focusedWindow()
    if frameCache[win:id()] then
@@ -20,7 +21,11 @@ function toggle_window_maximized()
    end
 end
 
-hs.hotkey.bind({'ctrl', 'alt'}, '3', function() toggle_window_maximized() end)
+hs.hotkey.bind({'ctrl', 'alt'}, '1', function() toggle_window_maximized() end)
+hs.hotkey.bind({'ctrl', 'alt'}, '2', function() hs.window.switcher.nextWindow() end)
+
+hs.hotkey.bind({'ctrl', 'alt'}, '4', function() hs.eventtap.keyStroke({"ctrl", "shift"}, "tab") end)
+hs.hotkey.bind({'ctrl', 'alt'}, '6', function() hs.eventtap.keyStroke({"ctrl"}, "tab") end)
 
 -- SkyRocket
 local SkyRocket = hs.loadSpoon("SkyRocket")
