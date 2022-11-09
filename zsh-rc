@@ -102,7 +102,11 @@ function virtualenv_info {
   [ $VIRTUAL_ENV ] && echo "[$(basename $VIRTUAL_ENV)] "
 }
 
-export PROMPT="\$(virtualenv_info)$PROMPT"
+function custom_notes {
+  [ $CUSTOM_NOTES ] && echo "{$CUSTOM_NOTES} "
+}
+
+export PROMPT="\$(virtualenv_info)\$(custom_notes)$PROMPT"
 setopt PROMPT_SUBST
 
 export TERM=xterm
