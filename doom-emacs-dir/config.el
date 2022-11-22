@@ -9,7 +9,7 @@
 (setq user-full-name "Minhwan Kim"
       user-mail-address "azurelysium@gmail.com")
 
-(setq doom-theme 'doom-vibrant)
+(setq doom-theme 'doom-zenburn)
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
@@ -41,8 +41,8 @@
 (global-set-key [down] 'windmove-down)          ; move to lower window
 (global-set-key (kbd "C-c z") 'zoom-window-zoom)
 
-(evil-global-set-key 'normal "J" 'evil-forward-paragraph)
-(evil-global-set-key 'normal "K" 'evil-backward-paragraph)
+(define-key evil-motion-state-map (kbd "[ t") 'centaur-tabs-backward)
+(define-key evil-motion-state-map (kbd "] t") 'centaur-tabs-forward)
 
 (map!
  (:leader
@@ -99,3 +99,8 @@
   (setq tree-sitter-debug-jump-buttons t
         ;; and this highlights the entire sub tree in your code
         tree-sitter-debug-highlight-jump-region t))
+
+(with-eval-after-load 'treemacs
+  (defun treemacs-ignore-pycache(file _)
+    (string= file "__pycache__"))
+  (push #'treemacs-ignore-pycache treemacs-ignored-file-predicates))
