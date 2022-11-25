@@ -21,11 +21,26 @@ function toggle_window_maximized()
    end
 end
 
-hs.hotkey.bind({'ctrl', 'alt'}, '1', function() toggle_window_maximized() end)
-hs.hotkey.bind({'ctrl', 'alt'}, '2', function() hs.window.switcher.nextWindow() end)
 
 hs.hotkey.bind({'ctrl', 'alt'}, '4', function() hs.eventtap.keyStroke({"ctrl", "shift"}, "tab") end)
+hs.hotkey.bind({'ctrl', 'alt'}, '5', function() toggle_window_maximized() end)
 hs.hotkey.bind({'ctrl', 'alt'}, '6', function() hs.eventtap.keyStroke({"ctrl"}, "tab") end)
+
+-- Volume Control
+local function sendSystemKey(key)
+    hs.eventtap.event.newSystemKeyEvent(key, true):post()
+    hs.eventtap.event.newSystemKeyEvent(key, false):post()
+end
+
+local volume = {
+    up   = function() sendSystemKey("SOUND_UP") end,
+    down = function() sendSystemKey("SOUND_DOWN") end,
+    mute = function() sendSystemKey("MUTE") end,
+}
+
+hs.hotkey.bind({}, "pad5", volume.mute)
+hs.hotkey.bind({}, "pad8", volume.up, nil, volume.up)
+hs.hotkey.bind({}, "pad2", volume.down, nil, volume.down)
 
 -- SkyRocket
 local SkyRocket = hs.loadSpoon("SkyRocket")

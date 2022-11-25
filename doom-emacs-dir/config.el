@@ -43,6 +43,8 @@
 
 (define-key evil-motion-state-map (kbd "[ t") 'centaur-tabs-backward)
 (define-key evil-motion-state-map (kbd "] t") 'centaur-tabs-forward)
+(define-key evil-motion-state-map (kbd "[ T") 'centaur-tabs-move-current-tab-to-left)
+(define-key evil-motion-state-map (kbd "] T") 'centaur-tabs-move-current-tab-to-right)
 
 (map!
  (:leader
