@@ -46,6 +46,18 @@
 (define-key evil-motion-state-map (kbd "[ T") 'centaur-tabs-move-current-tab-to-left)
 (define-key evil-motion-state-map (kbd "] T") 'centaur-tabs-move-current-tab-to-right)
 
+(use-package! centaur-tabs
+  :config
+  (setq centaur-tabs-set-close-button nil)
+  (setq centaur-tabs-show-new-tab-button nil)
+  (setq centaur-tabs-show-count t)
+  (setq centaur-tabs-style "bar")
+  (set-face-attribute 'centaur-tabs-selected nil
+   :background "black" :foreground "white")
+  (set-face-attribute 'centaur-tabs-selected-modified nil
+   :background "red" :foreground "gray20")
+  )
+
 (map!
  (:leader
   (:prefix "t"
