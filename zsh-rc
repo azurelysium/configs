@@ -113,7 +113,7 @@ export TERM=xterm
 export EDITOR='vim'
 
 alias 'emacs'='emacs -nw'
-alias 'ls'='ls --color=auto'
+alias 'ls'='ls --color=always'
 
 alias 'k'='kubectl'
 alias 'kx'='kubectx'
