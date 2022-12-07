@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/home/azurelysium/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -114,8 +114,6 @@ export EDITOR='vim'
 
 alias 'emacs'='emacs -nw'
 alias 'ls'='ls --color=auto'
-alias 'scrcap'='import png:- | xclip -selection c -t image/png'
-alias 'send-to-clipboard'='xclip -selection clipboard'
 
 alias 'k'='kubectl'
 alias 'kx'='kubectx'
