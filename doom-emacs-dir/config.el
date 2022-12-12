@@ -55,7 +55,7 @@
   (set-face-attribute 'centaur-tabs-selected nil
    :background "black" :foreground "white")
   (set-face-attribute 'centaur-tabs-selected-modified nil
-   :background "red" :foreground "gray20")
+   :background "red" :foreground "white")
   )
 
 (map!
