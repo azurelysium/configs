@@ -46,6 +46,11 @@
 (define-key evil-motion-state-map (kbd "[ T") 'centaur-tabs-move-current-tab-to-left)
 (define-key evil-motion-state-map (kbd "] T") 'centaur-tabs-move-current-tab-to-right)
 
+(global-set-key (kbd "C-c t [") 'centaur-tabs-backward)
+(global-set-key (kbd "C-c t ]") 'centaur-tabs-forward)
+(global-set-key (kbd "C-c t {") 'centaur-tabs-move-current-tab-to-left)
+(global-set-key (kbd "C-c t }") 'centaur-tabs-move-current-tab-to-right)
+
 (use-package! centaur-tabs
   :config
   (setq centaur-tabs-set-close-button nil)
@@ -80,6 +85,8 @@
  "<end>" #'end-of-line)
 
 ;; orgmode settings
+
+(add-to-list 'evil-emacs-state-modes 'org-mode)
 
 (add-hook 'org-mode-hook
   (lambda () (local-set-key (kbd "C-c C-b") 'org-mark-ring-goto)))
