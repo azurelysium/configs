@@ -49,9 +49,10 @@
 ;; ...Or *all* packages (NOT RECOMMENDED; will likely break things)
 ;(unpin! t)
 
+(package! zoom-window)
 (package! evil-escape)
 (package! go-mode)
 (package! dockerfile-mode)
 (package! typescript-mode)
 (package! rjsx-mode)
-(package! zoom-window)
+(package! svelte-mode)
