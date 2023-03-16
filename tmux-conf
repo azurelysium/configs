@@ -1,5 +1,5 @@
 #set-window-option -g mode-keys vi
-#set -g default-terminal "screen-256color"
+set -g default-terminal "xterm"
 set -q -g status-utf8 on 
 setw -q -g utf8 on
 

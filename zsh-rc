@@ -109,6 +109,8 @@ function custom_notes {
 export PROMPT="\$(virtualenv_info)\$(custom_notes)$PROMPT"
 setopt PROMPT_SUBST
 
+# https://www.gnu.org/software/emacs/manual/html_node/efaq/Colors-on-a-TTY.html
+export COLORTERM=truecolor
 export TERM=xterm
 export EDITOR='vim'
 
