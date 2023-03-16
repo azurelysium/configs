@@ -1,5 +1,7 @@
-set -U EDITOR vim
-set -U TERM xterm
+# https://www.gnu.org/software/emacs/manual/html_node/efaq/Colors-on-a-TTY.html
+set -xg COLORTERM truecolor
+set -xg TERM xterm-direct
+set -xg EDITOR vim
 
 alias 'emacs'='emacs -nw'
 alias 'k'='kubectl'
@@ -8,16 +10,16 @@ alias 'kn'='kubens'
 alias 'kk'='echo Context: (kubectx -c) \nNamespace: (kubens -c)'
 
 # PATH settings
-set --export PATH "$PATH:~/Bin:/snap/bin:~/.local/bin"
+set -xg PATH "$PATH:~/Bin:/snap/bin:~/.local/bin"
 
 # Pyenv
-set --export PYENV_ROOT $HOME/.pyenv
-set --export PATH "$PATH:$PYENV_ROOT/bin"
+set -xg PYENV_ROOT $HOME/.pyenv
+set -xg PATH "$PATH:$PYENV_ROOT/bin"
 if command -v pyenv 1>/dev/null 2>&1
   pyenv init - | source
 end
 
-set --export VIRTUAL_ENV_DISABLE_PROMPT 1
+set -xg VIRTUAL_ENV_DISABLE_PROMPT 1
 . ~/envs/default/bin/activate.fish
 
 # Direnv
@@ -26,7 +28,7 @@ if command -v direnv 1>/dev/null 2>&1
 end
 
 # NVM
-set --export NVM_DIR $HOME/.nvm
+set -xg NVM_DIR $HOME/.nvm
 function nvm
   bass source ~/.nvm/nvm.sh --no-use ';' nvm $argv
 end
