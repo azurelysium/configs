@@ -22,9 +22,9 @@ function toggle_window_maximized()
 end
 
 
-hs.hotkey.bind({'ctrl', 'alt'}, '4', function() hs.eventtap.keyStroke({"ctrl", "shift"}, "tab") end)
+hs.hotkey.bind({'ctrl', 'alt'}, '1', function() hs.eventtap.keyStroke({"ctrl", "shift"}, "tab") end)
 hs.hotkey.bind({'ctrl', 'alt'}, '5', function() toggle_window_maximized() end)
-hs.hotkey.bind({'ctrl', 'alt'}, '6', function() hs.eventtap.keyStroke({"ctrl"}, "tab") end)
+hs.hotkey.bind({'ctrl', 'alt'}, '3', function() hs.eventtap.keyStroke({"ctrl"}, "tab") end)
 
 hs.hotkey.bind({}, 'pad7', function() hs.eventtap.keyStroke({"ctrl", "shift"}, "tab") end)
 hs.hotkey.bind({}, 'pad9', function() hs.eventtap.keyStroke({"ctrl"}, "tab") end)
