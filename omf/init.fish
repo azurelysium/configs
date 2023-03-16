@@ -1,6 +1,6 @@
 # https://www.gnu.org/software/emacs/manual/html_node/efaq/Colors-on-a-TTY.html
 set -xg COLORTERM truecolor
-set -xg TERM xterm-direct
+set -xg TERM xterm
 set -xg EDITOR vim
 
 alias 'emacs'='emacs -nw'

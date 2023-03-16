@@ -3,8 +3,10 @@ set -g default-terminal "xterm"
 set -q -g status-utf8 on 
 setw -q -g utf8 on
 
-set-window-option -g mode-keys vi
 set-option -g default-shell /usr/bin/fish
+set-option -sa terminal-overrides ",xterm*:Tc"
+set-window-option -g mode-keys vi
+
 set -g status-bg blue
 set -g status-fg white
 set -g prefix C-z
