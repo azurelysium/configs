@@ -97,7 +97,7 @@
 
 ;; orgmode settings
 
-(add-to-list 'evil-emacs-state-modes 'org-mode)
+;(add-to-list 'evil-emacs-state-modes 'org-mode)
 
 (add-hook 'org-mode-hook
   (lambda () (local-set-key (kbd "C-c C-b") 'org-mark-ring-goto)))
