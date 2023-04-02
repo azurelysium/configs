@@ -65,6 +65,7 @@
 
 (map!
  (:leader
+  (:desc "Switch to the last buffer" "l" 'evil-switch-to-windows-last-buffer)
   (:prefix "t"
    :desc "Toggle Treemacs" "t" '+treemacs/toggle)
   (:prefix "o"
