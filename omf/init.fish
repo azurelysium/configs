@@ -3,14 +3,14 @@ set -xg COLORTERM truecolor
 set -xg TERM xterm
 set -xg EDITOR vim
 
+# PATH settings
+set -xg PATH $PATH /snap/bin $HOME/Bin $HOME/.local/bin
+
 alias 'emacs'='emacs -nw'
 alias 'k'='kubectl'
 alias 'kx'='kubectx'
 alias 'kn'='kubens'
 alias 'kk'='echo Context: (kubectx -c) \nNamespace: (kubens -c)'
-
-# PATH settings
-set -xg PATH "$PATH:~/Bin:/snap/bin:~/.local/bin"
 
 # Pyenv
 set -xg PYENV_ROOT $HOME/.pyenv

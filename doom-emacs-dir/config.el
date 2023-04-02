@@ -41,6 +41,17 @@
 (global-set-key [down] 'windmove-down)          ; move to lower window
 (global-set-key (kbd "C-c z") 'zoom-window-zoom)
 
+(use-package org
+  :bind (:map org-mode-map
+              ("C-c TAB" . nil)))
+
+(global-set-key (kbd "C-c TAB n") '+workspace/new)
+(global-set-key (kbd "C-c TAB r") '+workspace/rename)
+(global-set-key (kbd "C-c TAB d") '+workspace/delete)
+(global-set-key (kbd "C-c TAB `") '+workspace/other)
+(global-set-key (kbd "C-c TAB [") '+workspace/switch-left)
+(global-set-key (kbd "C-c TAB ]") '+workspace/switch-right)
+
 (define-key evil-motion-state-map (kbd "[ t") 'centaur-tabs-backward)
 (define-key evil-motion-state-map (kbd "] t") 'centaur-tabs-forward)
 (define-key evil-motion-state-map (kbd "[ T") 'centaur-tabs-move-current-tab-to-left)
@@ -87,7 +98,7 @@
 
 ;; orgmode settings
 
-(add-to-list 'evil-emacs-state-modes 'org-mode)
+;(add-to-list 'evil-emacs-state-modes 'org-mode)
 
 (add-hook 'org-mode-hook
   (lambda () (local-set-key (kbd "C-c C-b") 'org-mark-ring-goto)))
