@@ -23,7 +23,7 @@
       (process-send-eof proc))))
 
 (setq interprogram-cut-function 'paste-to-osx)
-(setq interprogram-paste-function 'copy-from-osx)
+;(setq interprogram-paste-function 'copy-from-osx)
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
