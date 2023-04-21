@@ -22,7 +22,16 @@
       (process-send-string proc text)
       (process-send-eof proc))))
 
-(setq interprogram-cut-function 'paste-to-osx)
+;; (tmux-load-buffer.sh)
+;; !/bin/bash
+;; cat | tmux load-buffer -
+(defun paste-to-tmux (text &optional push)
+  (let ((process-connection-type nil))
+    (let ((proc (start-process "tmux-load-buffer" "*Messages*" "~/Bin/tmux-load-buffer.sh")))
+      (process-send-string proc text)
+      (process-send-eof proc))))
+
+(setq interprogram-cut-function 'paste-to-tmux)
 ;(setq interprogram-paste-function 'copy-from-osx)
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
