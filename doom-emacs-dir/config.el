@@ -160,3 +160,20 @@
   (defun treemacs-ignore-pycache(file _)
     (string= file "__pycache__"))
   (push #'treemacs-ignore-pycache treemacs-ignored-file-predicates))
+
+
+;; Multi-sensory Programming
+(defun generate-tone (frequency duration)
+  (start-process "generate-tone" "*Messages*"
+                 "~/Bin/generate-tone.sh"
+                 (number-to-string (+ 300 frequency))
+                 (number-to-string duration)))
+
+(defun generate-total-lines-tone()
+  (generate-tone (count-lines (point-min) (point-max)) 0.3))
+
+(defun generate-current-line-tone()
+  (generate-tone (line-number-at-pos) 0.3))
+
+(add-hook 'window-selection-change-functions (lambda (frame) (generate-total-lines-tone)))
+(add-hook 'window-buffer-change-functions (lambda (frame) (generate-total-lines-tone)))
