@@ -170,10 +170,19 @@
                  (number-to-string duration)))
 
 (defun generate-total-lines-tone()
-  (generate-tone (count-lines (point-min) (point-max)) 0.3))
+  (let ((lines (count-lines (point-min) (point-max))))
+    (when (> lines 10)
+      (generate-tone lines 0.5))))
 
 (defun generate-current-line-tone()
-  (generate-tone (line-number-at-pos) 0.3))
+  (let* ((lines (count-lines (point-min) (point-max)))
+         (current-line-number (line-number-at-pos))
+         (freq (+ 100 (* 900 (/ (float current-line-number) lines)))))
+    ;(message (number-to-string freq))
+    (generate-tone freq 0.1)))
 
 (add-hook 'window-selection-change-functions (lambda (frame) (generate-total-lines-tone)))
 (add-hook 'window-buffer-change-functions (lambda (frame) (generate-total-lines-tone)))
+
+(run-with-idle-timer 1 1'generate-current-line-tone)
+;(cancel-function-timers 'generate-current-line-tone)
