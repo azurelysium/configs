@@ -163,6 +163,10 @@
 
 
 ;; Multi-sensory Programming
+
+;; $ cat generate-tone.sh
+;; !/bin/bash
+;; ffplay -f lavfi -i "sine=frequency=$1:duration=$2" -autoexit -nodisp 2>/dev/null
 (defun generate-tone (frequency duration)
   (start-process "generate-tone" "*Messages*"
                  "~/Bin/generate-tone.sh"
