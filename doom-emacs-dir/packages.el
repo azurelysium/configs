@@ -51,6 +51,7 @@
 
 (package! zoom-window)
 (package! evil-escape)
+(package! w3m)
 (package! go-mode)
 (package! dockerfile-mode)
 (package! typescript-mode)

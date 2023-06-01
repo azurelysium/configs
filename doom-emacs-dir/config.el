@@ -162,6 +162,31 @@
     (string= file "__pycache__"))
   (push #'treemacs-ignore-pycache treemacs-ignored-file-predicates))
 
+;; w3m
+(use-package! w3m
+  :config
+  (setq w3m-use-cookies t)
+  (setq w3m-fill-column 0)
+  (setq w3m-home-page "http://www.google.com/ncr")
+  (autoload 'w3m-browse-url "w3m" "Ask a WWW browser to show a URL." t)
+  (autoload 'w3m-region "w3m" "Render region in current buffer and replace with result." t)
+  (setq w3m-coding-system 'utf-8
+        w3m-file-coding-system 'utf-8
+        w3m-file-name-coding-system 'utf-8
+        w3m-input-coding-system 'utf-8
+        w3m-output-coding-system 'utf-8
+        w3m-terminal-coding-system 'utf-8)
+  )
+
+(add-hook 'w3m-mode-hook
+          (lambda ()
+            (local-set-key [(up)] 'w3m-view-this-url-new-session)
+            (local-set-key [(down)] 'w3m-delete-buffer)
+            (local-set-key [(left)] 'w3m-previous-buffer)
+            (local-set-key [(right)] 'w3m-next-buffer)
+            (local-set-key [(p)] 'w3m-previous-anchor)
+            (local-set-key [(n)] 'w3m-next-anchor)
+            ))
 
 ;; Multi-sensory Programming
 

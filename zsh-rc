@@ -143,7 +143,7 @@ export NVM_DIR="$HOME/.nvm"
 export WASMER_DIR="/Users/azurelysium/.wasmer"
 [ -s "$WASMER_DIR/wasmer.sh" ] && source "$WASMER_DIR/wasmer.sh"
 
-export JAVA_HOME=/opt/homebrew/opt/openjdk@11/
-export SPARK_HOME=/opt/homebrew/Cellar/apache-spark/3.3.2/libexec
+export JAVA_HOME=/opt/homebrew/opt/openjdk@17/
+export SPARK_HOME=/opt/homebrew/Cellar/apache-spark/3.4.0/libexec
 export PATH="$JAVA_HOME/bin:$SPARK_HOME/bin:$PATH"
-export CPPFLAGS="-I/opt/homebrew/opt/openjdk@11/include"
+export CPPFLAGS="-I/opt/homebrew/opt/openjdk@17/include"
