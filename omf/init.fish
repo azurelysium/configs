@@ -4,7 +4,8 @@ set -xg TERM xterm
 set -xg EDITOR vim
 
 # PATH settings
-set -xg PATH $PATH /snap/bin $HOME/Bin $HOME/.local/bin
+set -xg PATH $PATH /snap/bin
+set -U fish_user_paths $fish_user_paths $HOME/Bin $HOME/.local/bin
 
 alias 'emacs'='emacs -nw'
 alias 'k'='kubectl'

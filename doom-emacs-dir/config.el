@@ -185,8 +185,8 @@
     ;(message (number-to-string freq))
     (generate-tone freq 0.1)))
 
-(add-hook 'window-selection-change-functions (lambda (frame) (generate-total-lines-tone)))
-(add-hook 'window-buffer-change-functions (lambda (frame) (generate-total-lines-tone)))
+;(add-hook 'window-selection-change-functions (lambda (frame) (generate-total-lines-tone)))
+;(add-hook 'window-buffer-change-functions (lambda (frame) (generate-total-lines-tone)))
 
 (defvar last-timer-function-position 0
   "Holds the cursor position from the last run of timer function.")
@@ -198,5 +198,5 @@
     (generate-current-line-tone))
   (setq last-timer-function-position (line-number-at-pos)))
 
-(run-with-idle-timer 1 1 'current-line-changed)
+;(run-with-idle-timer 1 1 'current-line-changed)
 ;(cancel-function-timers 'current-line-changed)
