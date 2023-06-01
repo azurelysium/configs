@@ -122,6 +122,7 @@
 ;; orgmode settings
 
 ;(add-to-list 'evil-emacs-state-modes 'org-mode)
+(setq org-element-use-cache nil)
 
 (add-hook 'org-mode-hook
   (lambda () (local-set-key (kbd "C-c C-b") 'org-mark-ring-goto)))
