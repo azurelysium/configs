@@ -30,10 +30,10 @@ set number
 set backspace=indent,eol,start
 
 " Custom Bindings
-map [t :tabprevious<cr>
-map ]t :tabnext<cr>
-map [T :-tabmove<cr>
-map ]T :+tabmove<cr>
+map t[ :tabprevious<cr>
+map t] :tabnext<cr>
+map t{ :-tabmove<cr>
+map t} :+tabmove<cr>
 map tq :tabclose<cr>
 map te :tabedit<cr>
 
@@ -61,10 +61,13 @@ nnoremap <leader>p :GFiles<CR>
 nnoremap <leader>f :Files<CR>
 nnoremap <leader>/ :Rg<CR>
 nnoremap <leader>q :qa<CR>
+nnoremap <C-l> zz
 
 " Plugin Installation
 call plug#begin()
 
+Plug 'tpope/vim-sensible'
+Plug 'thaerkh/vim-indentguides'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
 Plug 'jnurmine/Zenburn'
