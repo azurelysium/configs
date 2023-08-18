@@ -51,6 +51,7 @@
 
 (package! zoom-window)
 (package! evil-escape)
+(package! fzf)
 (package! w3m)
 (package! go-mode)
 (package! dockerfile-mode)
