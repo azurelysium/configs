@@ -53,6 +53,7 @@ nnoremap <leader>e :tabe ~/.config/nvim/init.vim<CR>
 nnoremap <leader>r :source ~/.config/nvim/init.vim<CR>
 nnoremap <leader>] :bnext<CR>
 nnoremap <leader>[ :bprevious<CR>
+nnoremap <leader>l :b#<CR>
 nnoremap <leader>d :BufDel<CR>
 nnoremap <leader>t :NERDTreeToggle<CR>
 nnoremap <leader>w :w<CR>
