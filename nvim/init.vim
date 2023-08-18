@@ -55,9 +55,11 @@ nnoremap <leader>] :bnext<CR>
 nnoremap <leader>[ :bprevious<CR>
 nnoremap <leader>d :BufDel<CR>
 nnoremap <leader>t :NERDTreeToggle<CR>
-nnoremap <leader>f :Files<CR>
+nnoremap <leader>w :w<CR>
+nnoremap <leader>b :Buffers<CR>
 nnoremap <leader>p :GFiles<CR>
-nnoremap <leader>w :Windows<CR>
+nnoremap <leader>f :Files<CR>
+nnoremap <leader>/ :Rg<CR>
 nnoremap <leader>q :qa<CR>
 
 " Plugin Installation
