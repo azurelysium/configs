@@ -54,6 +54,7 @@ nnoremap <leader>r :source ~/.config/nvim/init.vim<CR>
 nnoremap <leader>] :bnext<CR>
 nnoremap <leader>[ :bprevious<CR>
 nnoremap <leader>d :bd<CR>
+nnoremap <leader>t :NERDTreeToggle<CR>
 nnoremap <leader>f :Files<CR>
 nnoremap <leader>p :GFiles<CR>
 nnoremap <leader>w :Windows<CR>
