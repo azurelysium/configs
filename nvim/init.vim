@@ -37,13 +37,6 @@ map t} :+tabmove<cr>
 map tq :tabclose<cr>
 map te :tabedit<cr>
 
-map gn :bn<cr>
-map gp :bp<cr>
-map gd :bd<cr>
-map gq :bp<bar>sp<bar>bn<bar>bd<CR>
-map gq :bp<bar>sp<bar>bn<bar>bd<CR>
-map gb :BufstopModeFast<cr>
-
 map <Up> <C-w>k
 map <Down> <C-w>j
 map <Left> <C-w>h
@@ -51,6 +44,8 @@ map <Right> <C-w>l
 
 nnoremap <leader>e :tabe ~/.config/nvim/init.vim<CR>
 nnoremap <leader>r :source ~/.config/nvim/init.vim<CR>
+nnoremap <PageDown> :bnext<CR>
+nnoremap <PageUp> :bprevious<CR>
 nnoremap <leader>] :bnext<CR>
 nnoremap <leader>[ :bprevious<CR>
 nnoremap <leader>l :b#<CR>
