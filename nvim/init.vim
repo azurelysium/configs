@@ -53,7 +53,7 @@ nnoremap <leader>e :tabe ~/.config/nvim/init.vim<CR>
 nnoremap <leader>r :source ~/.config/nvim/init.vim<CR>
 nnoremap <leader>] :bnext<CR>
 nnoremap <leader>[ :bprevious<CR>
-nnoremap <leader>d :bd<CR>
+nnoremap <leader>d :BufDel<CR>
 nnoremap <leader>t :NERDTreeToggle<CR>
 nnoremap <leader>f :Files<CR>
 nnoremap <leader>p :GFiles<CR>
@@ -73,6 +73,7 @@ Plug 'preservim/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
+Plug 'ojroques/nvim-bufdel'
 
 call plug#end()
 
