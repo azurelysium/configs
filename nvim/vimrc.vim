@@ -107,3 +107,6 @@ nnoremap <C-f> :NERDTreeFind<CR>
 
 let g:rainbow_active = 1
 let $FZF_DEFAULT_COMMAND = 'rg --files'
+
+" Autocmd
+autocmd VimEnter * NERDTree | wincmd p | NERDTreeClose

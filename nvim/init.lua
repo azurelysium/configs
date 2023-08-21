@@ -21,6 +21,10 @@ require("nvim-possession").setup({
                 vim.cmd("bd " .. bufnr)
             end
         end
+    end,
+
+    post_hook = function()
+        vim.cmd("NERDTreeCWD")
     end
 })
 
