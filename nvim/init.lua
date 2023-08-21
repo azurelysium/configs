@@ -21,11 +21,7 @@ require("nvim-possession").setup({
                 vim.cmd("bd " .. bufnr)
             end
         end
-    end,
-
-    post_hook = function()
-        vim.cmd("NERDTree")
-    end,
+    end
 })
 
 local possession = require("nvim-possession")
