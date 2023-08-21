@@ -50,6 +50,7 @@ nnoremap <leader>] :bnext<CR>
 nnoremap <leader>[ :bprevious<CR>
 nnoremap <leader>l :b#<CR>
 nnoremap <leader>d :BufDel<CR>
+nnoremap <leader>D :BufDelOthers<CR>
 nnoremap <leader>t :NERDTreeToggle<CR>
 nnoremap <leader>w :w<CR>
 nnoremap <leader>b :Buffers<CR>
@@ -76,6 +77,11 @@ Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'ojroques/nvim-bufdel'
 
+Plug 'nvim-treesitter/nvim-treesitter'
+Plug 'ntpeters/vim-better-whitespace'
+Plug 'tpope/vim-surround'
+Plug 'luochen1990/rainbow'
+
 call plug#end()
 
 " Color Scheme
@@ -92,3 +98,6 @@ nnoremap <leader>n :NERDTreeFocus<CR>
 nnoremap <C-n> :NERDTree<CR>
 nnoremap <C-t> :NERDTreeToggle<CR>
 nnoremap <C-f> :NERDTreeFind<CR>
+
+let g:rainbow_active = 1
+let $FZF_DEFAULT_COMMAND = 'rg -l .'
