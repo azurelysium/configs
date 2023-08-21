@@ -100,4 +100,4 @@ nnoremap <C-t> :NERDTreeToggle<CR>
 nnoremap <C-f> :NERDTreeFind<CR>
 
 let g:rainbow_active = 1
-let $FZF_DEFAULT_COMMAND = 'rg -l .'
+let $FZF_DEFAULT_COMMAND = 'rg --files'
