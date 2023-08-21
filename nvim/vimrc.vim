@@ -38,6 +38,7 @@ map tn :tabnew<cr>
 map tq :tabclose<cr>
 map te :tabedit<cr>
 
+map <ESC> :noh<CR>
 map <Up> <C-w>k
 map <Down> <C-w>j
 map <Left> <C-w>h
@@ -65,23 +66,27 @@ nnoremap <C-l> zz
 call plug#begin()
 
 Plug 'tpope/vim-sensible'
-Plug 'thaerkh/vim-indentguides'
-Plug 'junegunn/goyo.vim'
-Plug 'junegunn/limelight.vim'
-Plug 'jnurmine/Zenburn'
-
+Plug 'vim-airline/vim-airline'
+Plug 'ojroques/nvim-bufdel'
 Plug 'easymotion/vim-easymotion'
-Plug 'bling/vim-airline'
+Plug 'thaerkh/vim-indentguides'
+Plug 'ntpeters/vim-better-whitespace'
+
+Plug 'mhinz/vim-startify'
+Plug 'ibhagwan/fzf-lua'
+Plug 'gennaro-tedesco/nvim-possession'
+
 Plug 'preservim/nerdtree', { 'on': 'NERDTreeToggle' }
-Plug 'ctrlpvim/ctrlp.vim'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
-Plug 'ojroques/nvim-bufdel'
 
 Plug 'nvim-treesitter/nvim-treesitter'
-Plug 'ntpeters/vim-better-whitespace'
-Plug 'tpope/vim-surround'
+Plug 'kylechui/nvim-surround'
 Plug 'luochen1990/rainbow'
+
+Plug 'junegunn/limelight.vim'
+Plug 'junegunn/goyo.vim'
+Plug 'jnurmine/Zenburn'
 
 call plug#end()
 
