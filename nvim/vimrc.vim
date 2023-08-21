@@ -34,6 +34,7 @@ map t[ :tabprevious<cr>
 map t] :tabnext<cr>
 map t{ :-tabmove<cr>
 map t} :+tabmove<cr>
+map tn :tabnew<cr>
 map tq :tabclose<cr>
 map te :tabedit<cr>
 
@@ -42,8 +43,8 @@ map <Down> <C-w>j
 map <Left> <C-w>h
 map <Right> <C-w>l
 
-nnoremap <leader>e :tabe ~/.config/nvim/init.vim<CR>
-nnoremap <leader>r :source ~/.config/nvim/init.vim<CR>
+nnoremap <leader>e :tabe ~/.config/nvim/vimrc.vim<CR>
+nnoremap <leader>r :source ~/.config/nvim/init.lua<CR>
 nnoremap <PageDown> :bnext<CR>
 nnoremap <PageUp> :bprevious<CR>
 nnoremap <leader>] :bnext<CR>
