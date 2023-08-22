@@ -24,7 +24,7 @@ require("nvim-possession").setup({
     end,
 
     post_hook = function()
-        vim.cmd("NERDTreeCWD")
+        vim.cmd("NERDTreeCWD | wincmd p")
     end
 })
 

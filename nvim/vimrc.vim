@@ -27,6 +27,7 @@ set expandtab
 set ruler
 set hlsearch
 set number
+set autoread
 set backspace=indent,eol,start
 
 " Custom Bindings
