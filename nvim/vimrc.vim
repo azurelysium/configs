@@ -25,9 +25,8 @@ set shiftwidth=4
 set tabstop=4
 set expandtab
 set ruler
-set hlsearch
 set number
-set autoread
+" set hlsearch
 set backspace=indent,eol,start
 
 " Custom Bindings
@@ -47,6 +46,7 @@ map <Right> <C-w>l
 
 nnoremap <leader>e :tabe ~/.config/nvim/vimrc.vim<CR>
 nnoremap <leader>r :source ~/.config/nvim/init.lua<CR>
+nnoremap <leader>R :e<CR>
 nnoremap <PageDown> :bnext<CR>
 nnoremap <PageUp> :bprevious<CR>
 nnoremap <leader>] :bnext<CR>
