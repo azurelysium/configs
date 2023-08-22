@@ -38,13 +38,12 @@ map tn :tabnew<cr>
 map tq :tabclose<cr>
 map te :tabedit<cr>
 
-map <ESC> :noh<CR>
 map <Up> <C-w>k
 map <Down> <C-w>j
 map <Left> <C-w>h
 map <Right> <C-w>l
 
-nnoremap <leader>e :tabe ~/.config/nvim/vimrc.vim<CR>
+nnoremap <leader>e :e ~/.config/nvim/vimrc.vim<CR>
 nnoremap <leader>r :source ~/.config/nvim/init.lua<CR>
 nnoremap <leader>R :e<CR>
 nnoremap <PageDown> :bnext<CR>
@@ -70,10 +69,10 @@ Plug 'tpope/vim-sensible'
 Plug 'vim-airline/vim-airline'
 Plug 'ojroques/nvim-bufdel'
 Plug 'easymotion/vim-easymotion'
+Plug 'roobert/search-replace.nvim'
 Plug 'thaerkh/vim-indentguides'
 Plug 'ntpeters/vim-better-whitespace'
 
-Plug 'mhinz/vim-startify'
 Plug 'ibhagwan/fzf-lua'
 Plug 'gennaro-tedesco/nvim-possession'
 
@@ -97,7 +96,9 @@ colorscheme zenburn
 " Plugin Settings
 let g:limelight_conceal_ctermfg = 'DarkGray'
 
+let g:airline_section_b = '%{getcwd()}'
 let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#show_close_button = 0
 let g:airline#extensions#tabline#fnamemod = ':t'
 
 let g:NERDTreeWinSize=50

@@ -1,11 +1,13 @@
 local vimrc = vim.fn.stdpath("config") .. "/vimrc.vim"
 vim.cmd.source(vimrc)
 
+-- Bufdel
 require('bufdel').setup {
   next = 'tabs',
   quit = false,  -- quit Neovim when last buffer is closed
 }
 
+-- Possession
 require("nvim-possession").setup({
     autoswitch = {
         enable = true, -- default false
@@ -41,3 +43,17 @@ end)
 vim.keymap.set("n", "<leader>sd", function()
     possession.delete()
 end)
+
+-- Search and Replace
+require("search-replace").setup({
+    -- optionally override defaults
+    default_replace_single_buffer_options = "gcI",
+    default_replace_multi_buffer_options = "egcI",
+})
+
+local opts = {}
+vim.api.nvim_set_keymap("v", "%", "<CMD>SearchReplaceWithinVisualSelection<CR>", opts)
+vim.api.nvim_set_keymap("n", "<leader>%", "<CMD>SearchReplaceSingleBufferOpen<CR>", opts)
+
+-- show the effects of a search / replace in a live preview window
+vim.o.inccommand = "split"
