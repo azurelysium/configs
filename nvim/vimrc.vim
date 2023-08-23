@@ -40,7 +40,6 @@ map tn :tabnew<CR>
 map tq :tabclose<CR>
 map te :tabedit<CR>
 
-map <Esc> :noh<CR>
 map <Up> <C-w>k
 map <Down> <C-w>j
 map <Left> <C-w>h
@@ -64,6 +63,7 @@ nnoremap <leader>f :Files<CR>
 nnoremap <leader>/ :Rg<CR>
 nnoremap <leader>q :qa<CR>
 nnoremap <C-l> zz
+nnoremap <Esc> :noh<CR>
 nnoremap <leader>j <Plug>(easymotion-overwin-line)
 
 " Plugin Installation
