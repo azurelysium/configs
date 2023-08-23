@@ -26,18 +26,21 @@ set tabstop=4
 set expandtab
 set ruler
 set number
-" set hlsearch
+set hlsearch
+set ignorecase
+set smartcase
 set backspace=indent,eol,start
 
 " Custom Bindings
-map t[ :tabprevious<cr>
-map t] :tabnext<cr>
-map t{ :-tabmove<cr>
-map t} :+tabmove<cr>
-map tn :tabnew<cr>
-map tq :tabclose<cr>
-map te :tabedit<cr>
+map t[ :tabprevious<CR>
+map t] :tabnext<CR>
+map t{ :-tabmove<CR>
+map t} :+tabmove<CR>
+map tn :tabnew<CR>
+map tq :tabclose<CR>
+map te :tabedit<CR>
 
+map <Esc> :noh<CR>
 map <Up> <C-w>k
 map <Down> <C-w>j
 map <Left> <C-w>h
@@ -61,6 +64,7 @@ nnoremap <leader>f :Files<CR>
 nnoremap <leader>/ :Rg<CR>
 nnoremap <leader>q :qa<CR>
 nnoremap <C-l> zz
+nnoremap <leader>j <Plug>(easymotion-overwin-line)
 
 " Plugin Installation
 call plug#begin()
