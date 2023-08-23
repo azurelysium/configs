@@ -2,10 +2,10 @@ local vimrc = vim.fn.stdpath("config") .. "/vimrc.vim"
 vim.cmd.source(vimrc)
 
 -- Bufdel
-require('bufdel').setup {
+require('bufdel').setup({
   next = 'tabs',
   quit = false,  -- quit Neovim when last buffer is closed
-}
+})
 
 -- Possession
 require("nvim-possession").setup({
@@ -44,6 +44,9 @@ vim.keymap.set("n", "<leader>sd", function()
     possession.delete()
 end)
 
+-- Surround
+require("nvim-surround").setup({})
+
 -- Search and Replace
 require("search-replace").setup({
     -- optionally override defaults
@@ -59,7 +62,7 @@ vim.api.nvim_set_keymap("n", "<leader>%", "<CMD>SearchReplaceSingleBufferOpen<CR
 vim.o.inccommand = "split"
 
 -- Tree-sitter
-require'nvim-treesitter.configs'.setup {
+require'nvim-treesitter.configs'.setup({
   highlight = {
     enable = true,
     -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
@@ -68,4 +71,4 @@ require'nvim-treesitter.configs'.setup {
     -- Instead of true it can also be a list of languages
     additional_vim_regex_highlighting = false,
   },
-}
+})

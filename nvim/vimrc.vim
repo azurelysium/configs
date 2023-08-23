@@ -56,6 +56,8 @@ nnoremap <leader>l :b#<CR>
 nnoremap <leader>d :BufDel<CR>
 nnoremap <leader>D :BufDelOthers<CR>
 nnoremap <leader>t :NERDTreeToggle<CR>
+nnoremap <leader>h :History<CR>
+nnoremap <leader>H :History:<CR>
 nnoremap <leader>w :w<CR>
 nnoremap <leader>b :Buffers<CR>
 nnoremap <leader>p :GFiles<CR>
@@ -113,6 +115,8 @@ nnoremap <C-f> :NERDTreeFind<CR>
 
 let g:rainbow_active = 1
 let $FZF_DEFAULT_COMMAND = 'rg --files'
+
+let g:better_whitespace_filetypes_blacklist = ['dashboard', 'nofile']
 
 " Autocmd
 autocmd VimEnter * NERDTree | wincmd p | NERDTreeClose
