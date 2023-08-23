@@ -96,7 +96,7 @@ colorscheme zenburn
 " Plugin Settings
 let g:limelight_conceal_ctermfg = 'DarkGray'
 
-let g:airline_section_b = '%{getcwd()}'
+let g:airline_section_b = '%{fnamemodify(getcwd(),":t")}'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#show_close_button = 0
 let g:airline#extensions#tabline#fnamemod = ':t'
