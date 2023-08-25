@@ -36,6 +36,7 @@ bind C-h select-pane -L
 bind C-l select-pane -R
 bind C-k select-pane -U
 bind C-j select-pane -D
+bind C-n next-layout
 
 bind C-c new-session
 bind C-r command-prompt -p rename-session 'rename-session %%'
@@ -47,7 +48,6 @@ bind T run-shell 'tmux set-buffer -b x-clip "$(date -Iseconds)"' \; paste-buffer
 bind y set-window-option synchronize-panes\; display-message "synchronize-panes is now #{?pane_synchronized,on,off}"
 
 bind space display-popup -w 90% -h 80% -E "tmux attach -t popup"
-#bind space run-shell "bash ~/Bin/tmux-toggle-popup.sh"
 
 #bind-key M-s choose-tree -Zs
 
