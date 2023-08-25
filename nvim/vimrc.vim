@@ -30,20 +30,21 @@ set hlsearch
 set ignorecase
 set smartcase
 set backspace=indent,eol,start
+set iskeyword-=_
 
 " Custom Bindings
-map t[ :tabprevious<CR>
-map t] :tabnext<CR>
-map t{ :-tabmove<CR>
-map t} :+tabmove<CR>
-map tn :tabnew<CR>
-map tq :tabclose<CR>
-map te :tabedit<CR>
+nnoremap <Up> <C-w>k
+nnoremap <Down> <C-w>j
+nnoremap <Left> <C-w>h
+nnoremap <Right> <C-w>l
 
-map <Up> <C-w>k
-map <Down> <C-w>j
-map <Left> <C-w>h
-map <Right> <C-w>l
+nnoremap t[ :tabprevious<CR>
+nnoremap t] :tabnext<CR>
+nnoremap t{ :-tabmove<CR>
+nnoremap t} :+tabmove<CR>
+nnoremap tn :tabnew<CR>
+nnoremap tq :tabclose<CR>
+nnoremap te :tabedit<CR>
 
 nnoremap <leader>e :e ~/.config/nvim/vimrc.vim<CR>
 nnoremap <leader>r :source ~/.config/nvim/init.lua<CR>
@@ -116,7 +117,7 @@ nnoremap <C-f> :NERDTreeFind<CR>
 let g:rainbow_active = 1
 let $FZF_DEFAULT_COMMAND = 'rg --files'
 
-let g:better_whitespace_filetypes_blacklist = ['dashboard', 'nofile']
+let g:better_whitespace_filetypes_blacklist = ['dashboard', 'nofile', 'terminal']
 
 " Autocmd
 autocmd VimEnter * NERDTree | wincmd p | NERDTreeClose
