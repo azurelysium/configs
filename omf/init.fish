@@ -4,7 +4,7 @@ set -xg TERM xterm
 set -xg EDITOR vim
 
 # PATH settings
-set -xg PATH $PATH /snap/bin
+set -xg PATH $PATH /snap/bin /opt/homebrew/bin
 set -U fish_user_paths $fish_user_paths $HOME/Bin $HOME/.local/bin
 
 alias 'emacs'='emacs -nw'
@@ -12,8 +12,7 @@ alias 'k'='kubectl'
 alias 'kx'='kubectx'
 alias 'kn'='kubens'
 alias 'kk'='echo Context: (kubectx -c) \nNamespace: (kubens -c)'
-alias 'nvim'='SHELL=sh /snap/bin/nvim'
-alias 'bat'='batcat'
+alias 'nvim'='SHELL=sh /usr/bin/env nvim'
 
 # Pyenv
 set -xg PYENV_ROOT $HOME/.pyenv

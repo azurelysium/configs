@@ -31,6 +31,7 @@ set ignorecase
 set smartcase
 set backspace=indent,eol,start
 set iskeyword-=_
+set mouse=
 
 " Custom Bindings
 nnoremap <Up> <C-w>k
