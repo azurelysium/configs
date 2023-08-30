@@ -36,9 +36,10 @@ function fish_prompt
 
   set -l prompt_string $fish
 
-  if test "$theme_ignore_ssh_awareness" != 'yes' -a -n "$SSH_CLIENT$SSH_TTY"
-    set prompt_string "$fish [$python_venv] [$custom_notes] "(whoami)"@"(hostname -s)" $fish"
-  end
+  set prompt_string "$fish [$python_venv] [$custom_notes] "(whoami)"@"(hostname -s)" $fish"
+  #if test "$theme_ignore_ssh_awareness" != 'yes' -a -n "$SSH_CLIENT$SSH_TTY"
+  #  set prompt_string "$fish [$python_venv] [$custom_notes] "(whoami)"@"(hostname -s)" $fish"
+  #end
 
   if test $last_command_status -eq 0
     echo -n -s $success_color $prompt_string $normal_color
