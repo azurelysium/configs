@@ -58,14 +58,19 @@ nnoremap <leader>l :b#<CR>
 nnoremap <leader>d :BufDel<CR>
 nnoremap <leader>D :BufDelOthers<CR>
 nnoremap <leader>t :NERDTreeToggle<CR>
-nnoremap <leader>h :History<CR>
-nnoremap <leader>H :History:<CR>
+nnoremap <leader>b :Telescope buffers<CR>
+nnoremap <leader>b :Telescope buffers<CR>
+nnoremap <leader>f :Telescope find_files<CR>
+nnoremap <leader>g :Telescope live_grep<CR>
+nnoremap <leader>h :Telescope oldfiles<CR>
+nnoremap <leader>H :Telescope command_history<CR>
+nnoremap <leader>p :Telescope commmands<CR>
+nnoremap <leader>k :Telescope registers<CR>
+nnoremap <leader>/ :Telescope current_buffer_fuzzy_find<CR>
+nnoremap <leader>sl :Telescope possession list<CR>
+nnoremap <leader>ss :PossessionSave<CR>
 nnoremap <leader>w :w<CR>
-nnoremap <leader>b :Buffers<CR>
-nnoremap <leader>g :GFiles<CR>
-nnoremap <leader>f :Files<CR>
-nnoremap <leader>/ :Rg<CR>
-nnoremap <leader>q :qa<CR>
+nnoremap <leader>q :quitall<CR>
 nnoremap <C-l> zz
 nnoremap <Esc> :noh<CR>
 nnoremap <leader>j <Plug>(easymotion-overwin-line)
@@ -91,6 +96,8 @@ Plug 'nvim-treesitter/nvim-treesitter'
 Plug 'kylechui/nvim-surround'
 Plug 'luochen1990/rainbow'
 
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 Plug 'junegunn/limelight.vim'
 Plug 'junegunn/goyo.vim'
 Plug 'jnurmine/Zenburn'

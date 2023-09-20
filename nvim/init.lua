@@ -25,12 +25,10 @@ require("telescope").load_extension("fzf")
 local builtin = require("telescope.builtin")
 --vim.keymap.set("n", "<leader>ff", builtin.find_files, {})
 --vim.keymap.set("n", "<leader>fg", builtin.live_grep, {})
-vim.keymap.set("n", "<leader>fb", builtin.buffers, {})
-vim.keymap.set("n", "<leader>fh", builtin.help_tags, {})
-
-vim.keymap.set("n", "<leader>ff", function() builtin.find_files({ cwd = vim.loop.cwd() }) end, {})
-vim.keymap.set("n", "<leader>fg", function() builtin.live_grep({ cwd = vim.loop.cwd() }) end, {})
-vim.keymap.set("n", "<leader>fs", function() require("telescope").extensions.possession.list() end, {})
+--vim.keymap.set("n", "<leader>fb", builtin.buffers, {})
+--vim.keymap.set("n", "<leader>fh", builtin.help_tags, {})
+--vim.keymap.set("n", "<leader>fr", builtin.registers, {})
+--vim.keymap.set("n", "<leader>fs", function() require("telescope").extensions.possession.list() end, {})
 
 local actions = require("telescope.actions")
 require("telescope").setup({
@@ -39,6 +37,8 @@ require("telescope").setup({
       i = {
       ["<esc>"] = actions.close,
       ["<C-g>"] = actions.close,
+      ["<C-j>"] = actions.move_selection_next,
+      ["<C-k>"] = actions.move_selection_previous,
       },
     },
   },
@@ -52,6 +52,7 @@ require("possession").setup({
   },
   plugins = {
     delete_buffers = true,
+    delete_hidden_buffers = false,
   },
   hooks = {
     after_load = function(name, user_data)
