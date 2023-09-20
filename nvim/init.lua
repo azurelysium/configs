@@ -32,6 +32,18 @@ vim.keymap.set("n", "<leader>ff", function() builtin.find_files({ cwd = vim.loop
 vim.keymap.set("n", "<leader>fg", function() builtin.live_grep({ cwd = vim.loop.cwd() }) end, {})
 vim.keymap.set("n", "<leader>fs", function() require("telescope").extensions.possession.list() end, {})
 
+local actions = require("telescope.actions")
+require("telescope").setup({
+  defaults = {
+    mappings = {
+      i = {
+      ["<esc>"] = actions.close,
+      ["<C-g>"] = actions.close,
+      },
+    },
+  },
+})
+
 -- Possession
 require("possession").setup({
   autosave = {
