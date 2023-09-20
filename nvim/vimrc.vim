@@ -62,7 +62,7 @@ nnoremap <leader>h :History<CR>
 nnoremap <leader>H :History:<CR>
 nnoremap <leader>w :w<CR>
 nnoremap <leader>b :Buffers<CR>
-nnoremap <leader>p :GFiles<CR>
+nnoremap <leader>g :GFiles<CR>
 nnoremap <leader>f :Files<CR>
 nnoremap <leader>/ :Rg<CR>
 nnoremap <leader>q :qa<CR>
@@ -81,12 +81,11 @@ Plug 'roobert/search-replace.nvim'
 Plug 'thaerkh/vim-indentguides'
 Plug 'ntpeters/vim-better-whitespace'
 
-Plug 'ibhagwan/fzf-lua'
-Plug 'gennaro-tedesco/nvim-possession'
-
+Plug 'nvim-lua/plenary.nvim'
+Plug 'jedrzejboczar/possession.nvim'
+Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.3' }
+Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 Plug 'preservim/nerdtree', { 'on': 'NERDTreeToggle' }
-Plug 'junegunn/fzf'
-Plug 'junegunn/fzf.vim'
 
 Plug 'nvim-treesitter/nvim-treesitter'
 Plug 'kylechui/nvim-surround'
@@ -116,9 +115,7 @@ nnoremap <C-t> :NERDTreeToggle<CR>
 nnoremap <C-f> :NERDTreeFind<CR>
 
 let g:rainbow_active = 1
-let $FZF_DEFAULT_COMMAND = 'rg --files'
-
 let g:better_whitespace_filetypes_blacklist = ['dashboard', 'nofile', 'terminal']
 
 " Autocmd
-autocmd VimEnter * NERDTree | wincmd p | NERDTreeClose
+"autocmd VimEnter * NERDTree | wincmd p | NERDTreeClose
