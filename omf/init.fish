@@ -1,11 +1,12 @@
 # https://www.gnu.org/software/emacs/manual/html_node/efaq/Colors-on-a-TTY.html
+set -xg LD_LIBRARY_PATH /usr/local/lib
 set -xg COLORTERM truecolor
 set -xg TERM xterm
 set -xg EDITOR vim
 
 # PATH settings
 set -xg PATH $PATH /snap/bin /opt/homebrew/bin
-set -U fish_user_paths $fish_user_paths $HOME/Bin $HOME/.local/bin
+set -U fish_user_paths $fish_user_paths $HOME/Bin $HOME/.local/bin $HOME/go/bin
 
 alias 'emacs'='emacs -nw'
 alias 'k'='kubectl'
