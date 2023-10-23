@@ -3,6 +3,8 @@ set -xg LD_LIBRARY_PATH /usr/local/lib
 set -xg COLORTERM truecolor
 set -xg TERM xterm
 set -xg EDITOR vim
+set -xg POETRY_VIRTUALENVS_IN_PROJECT true
+set -xg DOCKER_BUILDKIT 1
 
 # PATH settings
 set -xg PATH $PATH /snap/bin /opt/homebrew/bin
