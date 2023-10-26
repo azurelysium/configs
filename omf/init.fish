@@ -15,7 +15,7 @@ alias 'k'='kubectl'
 alias 'kx'='kubectx'
 alias 'kn'='kubens'
 alias 'kk'='echo Context: (kubectx -c) \nNamespace: (kubens -c)'
-alias 'nvim'='SHELL=sh /usr/bin/env nvim'
+alias 'nvim'='TERM=st SHELL=sh /usr/bin/env nvim'
 
 # Pyenv
 set -xg PYENV_ROOT $HOME/.pyenv
