@@ -12,6 +12,7 @@ set -g status-bg blue
 set -g status-fg white
 
 bind r source-file ~/.tmux.conf \; display '~/.tmux.conf sourced'
+bind k run-shell 'kill -s INT -- "-$(ps -o tpgid:1= -p #{pane_pid})"'
 
 # Copied from oh my tmux
 set -g base-index 1           # start windows numbering at 1
