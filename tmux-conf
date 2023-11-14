@@ -10,6 +10,7 @@ set-option -sa terminal-overrides ",xterm*:Tc"
 
 set -g status-bg blue
 set -g status-fg white
+set -g pane-active-border-style fg=green,bg=default
 
 bind r source-file ~/.tmux.conf \; display '~/.tmux.conf sourced'
 bind k run-shell 'kill -s INT -- "-$(ps -o tpgid:1= -p #{pane_pid})"'
