@@ -16,7 +16,8 @@ alias 'kx'='kubectx'
 alias 'kn'='kubens'
 alias 'kk'='echo Context: (kubectx -c) \nNamespace: (kubens -c)'
 alias 'nvim'='TERM=st SHELL=sh /usr/bin/env nvim'
-function quell; ps -ux $argv | fzf | cut -f2 -d' ' | xargs -I'{}' kill '{}'; end
+alias 'gs'='git switch (git branch -a | fzf | sed -e "s/remotes\/origin\///g" | tr -d " ")'
+function quell; ps -ux $argv | fzf | cut -f3 -d' ' | xargs -I'{}' kill '{}'; end
 
 # Pyenv
 set -xg PYENV_ROOT $HOME/.pyenv
