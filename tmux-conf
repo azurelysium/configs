@@ -12,7 +12,7 @@ set -g status-bg blue
 set -g status-fg white
 set -g pane-active-border-style fg=green,bg=default
 
-bind r source-file ~/.tmux.conf \; display '~/.tmux.conf sourced'
+bind R source-file ~/.tmux.conf \; display '~/.tmux.conf sourced'
 bind k run-shell 'kill -s INT -- "-$(ps -o tpgid:1= -p #{pane_pid})"'
 
 # Copied from oh my tmux
@@ -64,4 +64,4 @@ bind-key -n M-y run-shell 'tmux save-buffer - | yank > #{pane_tty}'
 bind-key -n M-Y choose-buffer 'run-shell "tmux save-buffer -b \"%%%\" - | yank > #{pane_tty}"'
 
 # Machine-dependent configuration
-source-file ~/.tmux.conf.custom
+#source-file ~/.tmux.conf.custom
