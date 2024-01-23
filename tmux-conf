@@ -50,6 +50,7 @@ bind T run-shell 'tmux set-buffer -b x-clip "$(date -Iseconds)"' \; paste-buffer
 bind y set-window-option synchronize-panes\; display-message "synchronize-panes is now #{?pane_synchronized,on,off}"
 
 bind space display-popup -w 95% -h 90% -E "tmux attach -t popup"
+bind enter display-popup -w 40% -h 40% -E "tmux attach -t navi"
 bind O next-layout
 
 #bind-key M-s choose-tree -Zs
@@ -64,4 +65,4 @@ bind-key -n M-y run-shell 'tmux save-buffer - | yank > #{pane_tty}'
 bind-key -n M-Y choose-buffer 'run-shell "tmux save-buffer -b \"%%%\" - | yank > #{pane_tty}"'
 
 # Machine-dependent configuration
-#source-file ~/.tmux.conf.custom
+source-file ~/.tmux.conf.custom
