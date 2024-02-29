@@ -14,8 +14,8 @@ set -g pane-active-border-style fg=green,bg=default
 
 set -g status-style 'bg=#000000,fg=#aaaaaa'
 set -g window-status-current-style 'bg=#aaaaaa,fg=#000000'
-set -g window-status-format "#I:#W"
-set -g window-status-current-format "#I:#W"
+#set -g window-status-format "#I:#W"
+#set -g window-status-current-format "#I:#W"
 
 bind R source-file ~/.tmux.conf \; display '~/.tmux.conf sourced'
 bind k run-shell 'kill -s INT -- "-$(ps -o tpgid:1= -p #{pane_pid})"'
