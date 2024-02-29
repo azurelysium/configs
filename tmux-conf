@@ -9,7 +9,7 @@ set-option -g default-shell /usr/bin/fish
 set-option -sa terminal-overrides ",xterm*:Tc"
 
 set -g status-bg blue
-set -g status-fg white
+set -g status-fg black
 set -g pane-active-border-style fg=green,bg=default
 setw -g window-status-current-format "#[reverse] #I:#W"
 
