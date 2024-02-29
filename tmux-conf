@@ -12,10 +12,8 @@ set -g status-bg blue
 set -g status-fg black
 set -g pane-active-border-style fg=green,bg=default
 
-set -g status-style 'bg=#000000,fg=#ffffff'
-set -g window-status-current-style 'bg=#ffffff,fg=#000000'
-set -g status-left ''
-set -g status-right ''
+set -g status-style 'bg=#000000,fg=#aaaaaa'
+set -g window-status-current-style 'bg=#aaaaaa,fg=#000000'
 set -g window-status-format "#I:#W"
 set -g window-status-current-format "#I:#W"
 
