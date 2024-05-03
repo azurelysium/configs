@@ -23,7 +23,7 @@ function quell; ps -ux | fzf | awk '{print $2}' | xargs -I'{}' bash -c "echo kil
 
 # Pyenv
 set -xg PYENV_ROOT $HOME/.pyenv
-set -xg PATH "$PATH:$PYENV_ROOT/bin"
+set -xg PATH "$PATH:$PYENV_ROOT/bin:$PYENV_ROOT/shims"
 if command -v pyenv 1>/dev/null 2>&1
   pyenv init - | source
 end
