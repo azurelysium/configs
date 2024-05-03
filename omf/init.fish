@@ -8,7 +8,7 @@ set -xg DOCKER_BUILDKIT 1
 
 # PATH settings
 set -xg PATH $PATH /snap/bin /opt/homebrew/bin
-set -U fish_user_paths $fish_user_paths $HOME/Bin $HOME/.local/bin $HOME/go/bin
+set -U fish_user_paths $fish_user_paths $HOME/Bin $HOME/.local/bin $HOME/go/bin $HOME/.platformio/penv/bin
 
 alias 'emacs'='emacs -nw'
 alias 'k'='kubectl'
