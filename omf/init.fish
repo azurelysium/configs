@@ -19,6 +19,7 @@ alias 'nvim'='TERM=st SHELL=sh /usr/bin/env nvim'
 alias 'gs'='git switch (git branch -a | fzf | sed -e "s/remotes\/origin\///g" | tr -d " ")'
 alias 'gg'='git status'
 alias 'gd'='git diff HEAD'
+alias 'lg'='lazygit'
 function quell; ps -ux | fzf | awk '{print $2}' | xargs -I'{}' bash -c "echo kill $argv {}; kill $argv {}; ps --pid {}"; end 
 
 # Pyenv
