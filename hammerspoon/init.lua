@@ -1,66 +1,67 @@
-local function osExecute(cmd)
-    local fileHandle     = assert(io.popen(cmd, 'r'))
-    local commandOutput  = assert(fileHandle:read('*a'))
-    local returnTable    = {fileHandle:close()}
-    return commandOutput,returnTable[3]
+-- define function to toggle window between minimized and unminimized
+-- store window id to /tmp/hs_window_id
+--
+
+function toggleMinimized()
+  local isMinimized = 1
+
+  local file = io.open("/tmp/hs_minimized", "r")
+  if file ~= nil then
+    isMinimized = file:read()
+    isMinimized = tonumber(isMinimized)
+    file:close()
+  end
+
+  isMinimized = 1 - isMinimized
+  file = io.open("/tmp/hs_minimized", "w")
+  file:write(isMinimized)
+  file:close()
+
+  return isMinimized
 end
 
-hs.hotkey.bind({'ctrl', 'alt'}, '0', function() hs.caffeinate.lockScreen() end)
+hs.hotkey.bind({"ctrl"}, "\\", function()
 
--- Toggle a window between its normal size, and being maximized
-local frameCache = {}
-hs.window.animationDuration = 0
-function toggle_window_maximized()
-   local win = hs.window.focusedWindow()
-   if frameCache[win:id()] then
-      win:setFrame(frameCache[win:id()])
-      frameCache[win:id()] = nil
-   else
-      frameCache[win:id()] = win:frame()
-      win:maximize()
-   end
-end
+  -- read window id from /tmp/hs_window_id
+  local id = nil
+  local file = io.open("/tmp/hs_window_id", "r")
+  if file ~= nil then
+    id = file:read()
+    id = tonumber(id)
+    file:close()
+  end
 
+  print("id", id)
 
-hs.hotkey.bind({'ctrl', 'alt'}, '1', function() hs.eventtap.keyStroke({"ctrl", "shift"}, "tab") end)
--- hs.hotkey.bind({'ctrl', 'alt'}, '5', function() toggle_window_maximized() end)
-hs.hotkey.bind({'ctrl', 'alt'}, '3', function() hs.eventtap.keyStroke({"ctrl"}, "tab") end)
+  -- if window id is not nil, focus window
+  local win = nil
+  if id ~= nil then
+    win = hs.window.get(id)
+  end
 
-hs.hotkey.bind({}, 'pad7', function() hs.eventtap.keyStroke({"ctrl", "shift"}, "tab") end)
-hs.hotkey.bind({}, 'pad9', function() hs.eventtap.keyStroke({"ctrl"}, "tab") end)
+  print("win", win)
 
--- Volume Control
-local function sendSystemKey(key)
-    hs.eventtap.event.newSystemKeyEvent(key, true):post()
-    hs.eventtap.event.newSystemKeyEvent(key, false):post()
-end
+  if win == nil then
+    win = hs.window.focusedWindow()
+    if win == nil then
+      return
+    end
 
-local volume = {
-    up   = function() sendSystemKey("SOUND_UP") end,
-    down = function() sendSystemKey("SOUND_DOWN") end,
-    mute = function() sendSystemKey("MUTE") end,
-}
+    -- store window id to /tmp/hs_window_id
+    local file = io.open("/tmp/hs_window_id", "w")
+    file:write(win:id())
+    file:close()
+  end
 
-hs.hotkey.bind({}, "pad5", volume.mute)
-hs.hotkey.bind({}, "pad8", volume.up, nil, volume.up)
-hs.hotkey.bind({}, "pad2", volume.down, nil, volume.down)
+  local isMinimized = toggleMinimized()
+  print("isMinimized", isMinimized)
 
--- SkyRocket
-local SkyRocket = hs.loadSpoon("SkyRocket")
+  if isMinimized == 1 then
+    win:focus()
+    win:centerOnScreen()
+    win:unminimize()
+  else
+    win:minimize()
+  end
 
-sky = SkyRocket:new({
-  -- Opacity of resize canvas
-  opacity = 0.3,
-
-  -- Which modifiers to hold to move a window?
-  moveModifiers = {'cmd'},
-
-  -- Which mouse button to hold to move a window?
-  moveMouseButton = 'left',
-
-  -- Which modifiers to hold to resize a window?
-  resizeModifiers = {'cmd'},
-
-  -- Which mouse button to hold to resize a window?
-  resizeMouseButton = 'right',
-})
+end)

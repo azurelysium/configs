@@ -5,7 +5,7 @@ set -q -g status-utf8 on
 setw -q -g utf8 on
 
 set -g default-terminal "xterm"
-set-option -g default-shell /usr/bin/fish
+set-option -g default-shell /usr/local/bin/fish
 set-option -sa terminal-overrides ",xterm*:Tc"
 
 set -g status-bg blue

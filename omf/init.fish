@@ -5,10 +5,12 @@ set -xg TERM xterm
 set -xg EDITOR vim
 set -xg POETRY_VIRTUALENVS_IN_PROJECT true
 set -xg DOCKER_BUILDKIT 1
+set -xg LANG en_US.UTF-8
 
 # PATH settings
-set -xg PATH $PATH /snap/bin /opt/homebrew/bin
+set -xg PATH $PATH /snap/bin /opt/homebrew/bin /usr/local/bin
 set -U fish_user_paths $fish_user_paths $HOME/Bin $HOME/.local/bin $HOME/go/bin $HOME/.platformio/penv/bin
+set -U fish_user_paths $fish_user_paths $HOME/Library/Android/sdk/platform-tools
 
 alias 'emacs'='emacs -nw'
 alias 'k'='kubectl'
