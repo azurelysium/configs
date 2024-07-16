@@ -65,3 +65,21 @@ hs.hotkey.bind({"ctrl"}, "\\", function()
   end
 
 end)
+
+-- Create an event tap to listen for middle mouse button clicks
+middleButtonTap = hs.eventtap.new({hs.eventtap.event.types.otherMouseDown}, function(event)
+    -- Check if it's the middle button (usually button 2)
+    if event:getProperty(hs.eventtap.event.properties.mouseEventButtonNumber) == 2 then
+        -- Toggle Mission Control
+        hs.osascript.applescript([[
+            tell application "System Events"
+                key code 160 -- Mission Control
+            end tell
+        ]])
+        return true -- Prevent the event from propagating
+    end
+    return false
+end)
+
+-- Start the event tap
+middleButtonTap:start()
