@@ -56,20 +56,33 @@ hs.hotkey.bind({"ctrl"}, "\\", function()
   local isMinimized = toggleMinimized()
   print("isMinimized", isMinimized)
 
+  local winFocused = hs.window.focusedWindow()
   if isMinimized == 1 then
-    win:focus()
-    win:centerOnScreen()
+    local screen = winFocused:screen()
+    win:moveToScreen(screen)
     win:unminimize()
+    win:centerOnScreen()
+    win:focus()
   else
-    win:minimize()
+    if winFocused == win then
+      hs.eventtap.keyStroke({"cmd"}, "h")
+    else
+      win:focus()
+    end
   end
 
 end)
 
 -- Create an event tap to listen for middle mouse button clicks
+local MOUSE_BUTTON_MIDDLE = 2
+local MOUSE_BUTTON_PREV = 3
+local MOUSE_BUTTON_NEXT = 4
+
 middleButtonTap = hs.eventtap.new({hs.eventtap.event.types.otherMouseDown}, function(event)
-    -- Check if it's the middle button (usually button 2)
-    if event:getProperty(hs.eventtap.event.properties.mouseEventButtonNumber) == 2 then
+    local buttonPressed = event:getProperty(hs.eventtap.event.properties.mouseEventButtonNumber)
+    print("buttonPressed", buttonPressed)
+
+    if buttonPressed == MOUSE_BUTTON_MIDDLE then
         -- Toggle Mission Control
         hs.osascript.applescript([[
             tell application "System Events"
@@ -77,9 +90,16 @@ middleButtonTap = hs.eventtap.new({hs.eventtap.event.types.otherMouseDown}, func
             end tell
         ]])
         return true -- Prevent the event from propagating
+    elseif buttonPressed == MOUSE_BUTTON_PREV then
+        return true
+    elseif buttonPressed == MOUSE_BUTTON_NEXT then
+        return true
     end
+
     return false
 end)
 
 -- Start the event tap
-middleButtonTap:start()
+--middleButtonTap:start()
+
+-- WE USE the 3rd-party app Mac Mouse Fix for custom mouse button mapping
