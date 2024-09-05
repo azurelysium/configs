@@ -9,8 +9,9 @@ set -xg LANG en_US.UTF-8
 
 # PATH settings
 set -xg PATH $PATH /snap/bin /opt/homebrew/bin /usr/local/bin
-set -U fish_user_paths $fish_user_paths $HOME/Bin $HOME/.local/bin $HOME/go/bin $HOME/.platformio/penv/bin
-set -U fish_user_paths $fish_user_paths $HOME/Library/Android/sdk/platform-tools
+set -xg PATH $PATH $HOME/Bin $HOME/.local/bin
+set -xg PATH $PATH $HOME/go/bin $HOME/.platformio/penv/bin $HOME/Documents/flutter/bin
+set -xg PATH $PATH ./node_modules/.bin
 
 alias 'emacs'='emacs -nw'
 alias 'k'='kubectl'
@@ -22,7 +23,13 @@ alias 'gs'='git switch (git branch -a | fzf | sed -e "s/remotes\/origin\///g" | 
 alias 'gg'='git status'
 alias 'gd'='git diff HEAD'
 alias 'lg'='lazygit'
-function quell; ps -ux | fzf | awk '{print $2}' | xargs -I'{}' bash -c "echo kill $argv {}; kill $argv {}; ps --pid {}"; end 
+function quell; ps -ux | fzf | awk '{print $2}' | xargs -I'{}' bash -c "echo kill $argv {}; kill $argv {}; ps --pid {}"; end
+
+alias mqdh='/Applications/Meta\ Quest\ Developer\ Hub.app/Contents/MacOS/Meta\ Quest\ Developer\ Hub --remote-debugging-port=8315 --remote-allow-origins=http://localhost:8315 &; open http://localhost:8315; fg'
+alias ss='adb shell am start-foreground-service com.amazevr.mdm/com.amazevr.mdm.AdminService'
+alias sss='adb shell am force-stop com.amazevr.mdm'
+alias s='adb shell am start -n com.android.settings/.Settings'
+alias m='cd ~/work/amaze/mverse-backend'
 
 # Pyenv
 set -xg PYENV_ROOT $HOME/.pyenv
