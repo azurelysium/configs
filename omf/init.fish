@@ -8,10 +8,10 @@ set -xg DOCKER_BUILDKIT 1
 set -xg LANG en_US.UTF-8
 
 # PATH settings
-set -xg PATH $PATH /snap/bin /opt/homebrew/bin /usr/local/bin
-set -xg PATH $PATH $HOME/Bin $HOME/.local/bin
-set -xg PATH $PATH $HOME/go/bin $HOME/.platformio/penv/bin $HOME/Documents/flutter/bin
-set -xg PATH $PATH ./node_modules/.bin
+fish_add_path /snap/bin /opt/homebrew/bin /usr/local/bin
+fish_add_path $HOME/Bin $HOME/.local/bin
+fish_add_path $HOME/go/bin $HOME/.platformio/penv/bin $HOME/Documents/flutter/bin
+fish_add_path ./node_modules/.bin
 
 alias 'emacs'='emacs -nw'
 alias 'k'='kubectl'
