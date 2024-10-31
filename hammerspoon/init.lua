@@ -1,77 +1,81 @@
--- define function to toggle window between minimized and unminimized
--- store window id to /tmp/hs_window_id
---
+function makeWindowToggleFunction(pathWindowId, pathIsMinimized)
+  return function()
 
-function toggleMinimized()
-  local isMinimized = 1
+    -- read window id from pathWindowId
+    local id = nil
+    local file = io.open(pathWindowId, "r")
+    if file ~= nil then
+      id = file:read()
+      id = tonumber(id)
+      file:close()
+    end
 
-  local file = io.open("/tmp/hs_minimized", "r")
-  if file ~= nil then
-    isMinimized = file:read()
-    isMinimized = tonumber(isMinimized)
+    print("id", id)
+
+    -- if window id is not nil, focus window
+    local win = nil
+    if id ~= nil then
+      win = hs.window.get(id)
+    end
+
+    print("win", win)
+
+    if win == nil then
+      win = hs.window.focusedWindow()
+      if win == nil then
+        return
+      end
+
+      -- store window id to pathWindowId
+      local file = io.open(pathWindowId, "w")
+      file:write(win:id())
+      file:close()
+    end
+
+    -- toggle window between minimized and unminimized
+    local isMinimized = 1
+
+    local file = io.open(pathIsMinimized, "r")
+    if file ~= nil then
+      isMinimized = file:read()
+      isMinimized = tonumber(isMinimized)
+      file:close()
+    end
+
+    isMinimized = 1 - isMinimized
+    file = io.open(pathIsMinimized, "w")
+    file:write(isMinimized)
     file:close()
+
+    print("isMinimized", isMinimized)
+
+    -- focus window
+    local winFocused = hs.window.focusedWindow()
+    if isMinimized == 1 then
+      local screen = winFocused:screen()
+      win:moveToScreen(screen)
+      win:unminimize()
+      win:centerOnScreen()
+      win:focus()
+    else
+      if winFocused == win then
+        hs.eventtap.keyStroke({"cmd"}, "h")
+      else
+        win:focus()
+      end
+    end
   end
-
-  isMinimized = 1 - isMinimized
-  file = io.open("/tmp/hs_minimized", "w")
-  file:write(isMinimized)
-  file:close()
-
-  return isMinimized
 end
 
-hs.hotkey.bind({"ctrl"}, "\\", function()
+hs.hotkey.bind({"ctrl"}, "-", makeWindowToggleFunction(
+  "/Users/azurelysium/Documents/hs_window_id_1",
+  "/Users/azurelysium/Documents/hs_minimized_1"
+))
 
-  -- read window id from /tmp/hs_window_id
-  local id = nil
-  local file = io.open("/tmp/hs_window_id", "r")
-  if file ~= nil then
-    id = file:read()
-    id = tonumber(id)
-    file:close()
-  end
-
-  print("id", id)
-
-  -- if window id is not nil, focus window
-  local win = nil
-  if id ~= nil then
-    win = hs.window.get(id)
-  end
-
-  print("win", win)
-
-  if win == nil then
-    win = hs.window.focusedWindow()
-    if win == nil then
-      return
-    end
-
-    -- store window id to /tmp/hs_window_id
-    local file = io.open("/tmp/hs_window_id", "w")
-    file:write(win:id())
-    file:close()
-  end
-
-  local isMinimized = toggleMinimized()
-  print("isMinimized", isMinimized)
-
-  local winFocused = hs.window.focusedWindow()
-  if isMinimized == 1 then
-    local screen = winFocused:screen()
-    win:moveToScreen(screen)
-    win:unminimize()
-    win:centerOnScreen()
-    win:focus()
-  else
-    if winFocused == win then
-      hs.eventtap.keyStroke({"cmd"}, "h")
-    else
-      win:focus()
-    end
-  end
-
-end)
+hs.hotkey.bind({"ctrl"}, "\\", makeWindowToggleFunction(
+  "/Users/azurelysium/Documents/hs_window_id_2",
+  "/Users/azurelysium/Documents/hs_minimized_2"
+))
 
 -- Create an event tap to listen for middle mouse button clicks
 local MOUSE_BUTTON_MIDDLE = 2
