@@ -23,6 +23,7 @@ alias 'gs'='git switch (git branch -a | fzf | sed -e "s/remotes\/origin\///g" | 
 alias 'gg'='git status'
 alias 'gd'='git diff HEAD'
 alias 'lg'='lazygit'
+alias 'goto'='cd (dirname (fzf))'
 function quell; ps -ux | fzf | awk '{print $2}' | xargs -I'{}' bash -c "echo kill $argv {}; kill $argv {}; ps --pid {}"; end
 
 alias mqdh='/Applications/Meta\ Quest\ Developer\ Hub.app/Contents/MacOS/Meta\ Quest\ Developer\ Hub --remote-debugging-port=8315 --remote-allow-origins=http://localhost:8315 &; open http://localhost:8315; fg'
