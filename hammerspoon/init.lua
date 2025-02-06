@@ -77,6 +77,11 @@ hs.hotkey.bind({"ctrl"}, "\\", makeWindowToggleFunction(
   "/Users/azurelysium/Documents/hs_minimized_2"
 ))
 
+hs.hotkey.bind({"ctrl"}, "\'", makeWindowToggleFunction(
+  "/Users/azurelysium/Documents/hs_window_id_3",
+  "/Users/azurelysium/Documents/hs_minimized_3"
+))
+
 -- Create an event tap to listen for middle mouse button clicks
 local MOUSE_BUTTON_MIDDLE = 2
 local MOUSE_BUTTON_PREV = 3
