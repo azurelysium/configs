@@ -1,5 +1,8 @@
-function makeWindowToggleFunction(pathWindowId, pathIsMinimized)
+function makeWindowToggleFunction(pathWindowId, pathIsMinimized, onlyFocus)
   return function()
+    if onlyFocus == nil then
+      onlyFocus = false
+    end
 
     -- read window id from pathWindowId
     local id = nil
@@ -43,6 +46,10 @@ function makeWindowToggleFunction(pathWindowId, pathIsMinimized)
     end
 
     isMinimized = 1 - isMinimized
+    if onlyFocus then
+      isMinimized = 0
+    end
+
     file = io.open(pathIsMinimized, "w")
     file:write(isMinimized)
     file:close()
@@ -51,15 +58,19 @@ function makeWindowToggleFunction(pathWindowId, pathIsMinimized)
 
     -- focus window
     local winFocused = hs.window.focusedWindow()
-    if isMinimized == 1 then
+    if isMinimized == 0 then
       local screen = winFocused:screen()
       win:moveToScreen(screen)
       win:unminimize()
-      win:centerOnScreen()
+
+      if not onlyFocus then
+        win:centerOnScreen()
+      end
+
       win:focus()
     else
       if winFocused == win then
-        hs.eventtap.keyStroke({"cmd"}, "h")
+        hs.eventtap.keyStroke({ "cmd" }, "h")
       else
         win:focus()
       end
@@ -67,19 +78,21 @@ function makeWindowToggleFunction(pathWindowId, pathIsMinimized)
   end
 end
 
-hs.hotkey.bind({"ctrl"}, "-", makeWindowToggleFunction(
+hs.hotkey.bind({ "ctrl" }, "-", makeWindowToggleFunction(
   "/Users/azurelysium/Documents/hs_window_id_1",
   "/Users/azurelysium/Documents/hs_minimized_1"
 ))
 
-hs.hotkey.bind({"ctrl"}, "\\", makeWindowToggleFunction(
+hs.hotkey.bind({ "ctrl" }, "\\", makeWindowToggleFunction(
   "/Users/azurelysium/Documents/hs_window_id_2",
-  "/Users/azurelysium/Documents/hs_minimized_2"
+  "/Users/azurelysium/Documents/hs_minimized_2",
+  true
 ))
 
-hs.hotkey.bind({"ctrl"}, "\'", makeWindowToggleFunction(
+hs.hotkey.bind({ "ctrl" }, "\'", makeWindowToggleFunction(
   "/Users/azurelysium/Documents/hs_window_id_3",
-  "/Users/azurelysium/Documents/hs_minimized_3"
+  "/Users/azurelysium/Documents/hs_minimized_3",
+  true
 ))
 
 -- Create an event tap to listen for middle mouse button clicks
@@ -87,25 +100,25 @@ local MOUSE_BUTTON_MIDDLE = 2
 local MOUSE_BUTTON_PREV = 3
 local MOUSE_BUTTON_NEXT = 4
 
-middleButtonTap = hs.eventtap.new({hs.eventtap.event.types.otherMouseDown}, function(event)
-    local buttonPressed = event:getProperty(hs.eventtap.event.properties.mouseEventButtonNumber)
-    print("buttonPressed", buttonPressed)
+middleButtonTap = hs.eventtap.new({ hs.eventtap.event.types.otherMouseDown }, function(event)
+  local buttonPressed = event:getProperty(hs.eventtap.event.properties.mouseEventButtonNumber)
+  print("buttonPressed", buttonPressed)
 
-    if buttonPressed == MOUSE_BUTTON_MIDDLE then
-        -- Toggle Mission Control
-        hs.osascript.applescript([[
+  if buttonPressed == MOUSE_BUTTON_MIDDLE then
+    -- Toggle Mission Control
+    hs.osascript.applescript([[
             tell application "System Events"
                 key code 160 -- Mission Control
             end tell
         ]])
-        return true -- Prevent the event from propagating
-    elseif buttonPressed == MOUSE_BUTTON_PREV then
-        return true
-    elseif buttonPressed == MOUSE_BUTTON_NEXT then
-        return true
-    end
+    return true -- Prevent the event from propagating
+  elseif buttonPressed == MOUSE_BUTTON_PREV then
+    return true
+  elseif buttonPressed == MOUSE_BUTTON_NEXT then
+    return true
+  end
 
-    return false
+  return false
 end)
 
 -- Start the event tap
