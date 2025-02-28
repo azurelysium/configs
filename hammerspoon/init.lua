@@ -85,8 +85,7 @@ hs.hotkey.bind({ "ctrl" }, "-", makeWindowToggleFunction(
 
 hs.hotkey.bind({ "ctrl" }, "\\", makeWindowToggleFunction(
   "/Users/azurelysium/Documents/hs_window_id_2",
-  "/Users/azurelysium/Documents/hs_minimized_2",
-  true
+  "/Users/azurelysium/Documents/hs_minimized_2"
 ))
 
 hs.hotkey.bind({ "ctrl" }, "\'", makeWindowToggleFunction(
